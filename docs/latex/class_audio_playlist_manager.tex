@@ -1,0 +1,413 @@
+\hypertarget{class_audio_playlist_manager}{}\doxysection{Audio\+Playlist\+Manager Class Reference}
+\label{class_audio_playlist_manager}\index{AudioPlaylistManager@{AudioPlaylistManager}}
+
+
+Organizer/\+Manager class for enabling playback of audio files from a list.  
+
+
+
+
+{\ttfamily \#include $<$Audio\+Playlist\+Manager.\+h$>$}
+
+Inheritance diagram for Audio\+Playlist\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_audio_playlist_manager}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}} \{ \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ae04a2c6d43e63690308ce4e4df042713}{Idle}}
+, \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ad24a1e1dfac48e34afe676369d0bbbea}{Playing\+Intro}}
+, \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a60b2efbc788f45a2e427c39a6fc8105d}{Playing\+Sound}}
+, \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a4ddca80fcf27e02c5939d0aa4a96da3b}{Paused}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_audio_playlist_manager_a75e80155731c1ec26ca4f0ceb5757daf}{Audio\+Playlist\+Manager}} (uint8\+\_\+t esp32\+Timer, uint8\+\_\+t esp32\+Pin, const char $\ast$\+\_\+init\+Loc, uint8\+\_\+t \+\_\+amp\+Control\+Pin=0, bool \+\_\+on\+Pin\+High=true)
+\begin{DoxyCompactList}\small\item\em instantiate the audio manager \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a785bf7515b5aad3e6c61d03a488a3c67}{Run}} ()
+\begin{DoxyCompactList}\small\item\em Handles stateful playout of intro and desired audio clip in a thread. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_ab1f9d20ddeba890238960a8a3055dcbe}{Play\+Random\+Entry}} ()
+\begin{DoxyCompactList}\small\item\em Simply allows a random entry from the list to be played. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_afb37c268ad1e583a2dcfbeb648e71f0f}{Set\+Intro\+Sound\+Index}} (uint16\+\_\+t entry\+Num)
+\begin{DoxyCompactList}\small\item\em Setting the intro sound file via the index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a4106bd2d44f44b4af681678d98e1380f}{Set\+Intro\+Sound\+Name}} (const char $\ast$fname)
+\begin{DoxyCompactList}\small\item\em Setting the intro sound file via the name of the file sans folder name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_added299841e59e566d1544135505eb9c}{Play\+Entry\+Index}} (uint16\+\_\+t entry\+Num)
+\begin{DoxyCompactList}\small\item\em Setting the file to play out via the index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a5d53845fa497f544ea7408b8f25bc027}{Play\+Entry\+Name}} (const char $\ast$fname)
+\begin{DoxyCompactList}\small\item\em Setting the file to playout via the name of the file sans folder name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a7df2f03c194129861476c8d3ebd96a5f}{Play}} ()
+\begin{DoxyCompactList}\small\item\em Play/pause control. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_af739dfecae89af5842a317a97123ac88}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Play/pause control. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a4236ca64ffd9f94d0a48bd8396c6e897}{Set\+Volume}} (uint8\+\_\+t \+\_\+vol)
+\begin{DoxyCompactList}\small\item\em Sets the volume level (in software) from 0-\/100. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_aa33f498ccc46394f62eb548c1fecfe8a}{print\+Data\+Table}} ()
+\begin{DoxyCompactList}\small\item\em Utility/debug routine for printing the modified values given the volume setting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a734225f48ff565b5eac3157580b25294}{Clear\+File\+List}} ()
+\begin{DoxyCompactList}\small\item\em the audio file list contents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_aa048ddf99c20bcffbbb70e8132b71620}{Add\+Files\+From}} (const char $\ast$\+\_\+dirname)
+\begin{DoxyCompactList}\small\item\em Add (more) files to the current file list from a given \+\_\+dirname. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a3fc24d2e248d39393effc28f4851e879}{Get\+File\+List}} (std\+::vector$<$ std\+::string $>$ \&f\+List)
+\begin{DoxyCompactList}\small\item\em Obtain the current audio list as a vector of strings f\+List. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_robo_task}{Robo\+Task}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robo_task_a9257d6ef2a4cb579480af50def163ac6}{Robo\+Task}} (const char $\ast$task\+Name=nullptr, uint8\+\_\+t priority=1, int stacksize=ROBOSTACKSIZE)
+\begin{DoxyCompactList}\small\item\em Constructor which takes an optional taskname. In the absence of a task name, a task name will be created based upon the current system-\/time. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_robo_task_a74158bd82cc7ecf92a82586fa29c23bc}{$\sim$\+Robo\+Task}} ()
+\item 
+void \mbox{\hyperlink{class_robo_task_a19fb241824ebed8d04e4b43c3ffa1f25}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_a4b0430ec1fbcb21b7d57219b7f25d764}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_a98aac65646ad3bdbdbf9767038a0f800}{Terminate}} ()
+\begin{DoxyCompactList}\small\item\em Terminate the task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_ae95d3411cab02ed537dc1281620fe7ff}{is\+Dead}} ()
+\begin{DoxyCompactList}\small\item\em Check to see if the task is still alive. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_ae08140a322d83ceed98e4d3d722e4f3f}{is\+Paused}} ()
+\begin{DoxyCompactList}\small\item\em Check to see if the task is Alive \& Running. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_a27396cd6dfd4b70699826668e51dc9d6}{has\+Elapsed}} (unsigned long elapsed)
+\begin{DoxyCompactList}\small\item\em Easy way to utilize the base class to set a lower \textquotesingle{}action time\textquotesingle{} frequency. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_a761f3700645f56d056b50ab3cc4e0e39}{reset\+Elapsed\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Start the elapsed timer again with the current time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_ab28d49d25e8aa2cb119f7022871f8735}{set\+Base\+Run\+Delay}} (uint32\+\_\+t delay)
+\begin{DoxyCompactList}\small\item\em Change the default delay period in the task manager base class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Run}} ()=0
+\begin{DoxyCompactList}\small\item\em The inheriting class must implement this function. This is the function which gets run in the new task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_a53bc2198fdd4309e783efc240a7a586e}{is\+This\+Thread\+Context}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_robo_task_a1419ef40fd73938f9cbdc5da3bc3fe4c}{get\+Stack\+High\+Water\+Mark}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_ab52406b76607da647e312b99eaa03583}{Set\+Amp\+Power}} (bool \+\_\+on)
+\begin{DoxyCompactList}\small\item\em Turns on or off the amplifier power. This is managed by the thread internally. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_audio_playlist_manager_a3b342cdf36f1f1b1fc91a5876df1ba03}{Get\+Files}} (const char $\ast$dir\+Location, std\+::vector$<$ std\+::string $>$ \&file\+List)
+\begin{DoxyCompactList}\small\item\em Worker function for iterating through the files in a folder. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_playlist_manager_a424b7b13f64892063ec6d261e5ab2d2c}{Next\+State}} (\mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}} next\+State)
+\begin{DoxyCompactList}\small\item\em Stateful transition utility for the thread. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}} \mbox{\hyperlink{class_audio_playlist_manager_aa9bcd1ca4e71ccf2a21c90092e1c52b7}{cur\+State}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_audio_playlist_manager_a5e47e5d001afdd1a53dfcba55e1e8b88}{amp\+Power\+Pin}}
+\item 
+bool \mbox{\hyperlink{class_audio_playlist_manager_a71b400b480d951e49edb94a661e0bc8c}{amp\+Power\+Pin\+High}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{class_audio_playlist_manager_a054f576369ce00ad73375e3d6ad83440}{filenames}}
+\begin{DoxyCompactList}\small\item\em List of audio file names ready to be played. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_audio_file_player}{Audio\+File\+Player}} $>$ \mbox{\hyperlink{class_audio_playlist_manager_ad9865e853908f957394af92cae6ded4a}{p\+AFP}}
+\begin{DoxyCompactList}\small\item\em Single instance of the \mbox{\hyperlink{class_audio_file_player}{Audio\+File\+Player}} which is re-\/used for each playout. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_audio_playlist_manager_a8bae8cada278f30ca71c7fe5e035916d}{entry\+Number\+For\+Intro}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_audio_playlist_manager_af313e2007cdcec9872afd6b1d5546e24}{entry\+Number\+To\+Play}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_robo_task}{Robo\+Task}}}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_robo_task_a508d78f9e96cce859d439d26937a7496}{Robo\+Private\+Starter\+Task}} (void $\ast$task)
+\begin{DoxyCompactList}\small\item\em PRIVATE-\/ Do not call this function externally as it\textquotesingle{}s only passed to the constructor to initialize the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Organizer/\+Manager class for enabling playback of audio files from a list. 
+
+Features include\+:
+\begin{DoxyItemize}
+\item Scanning for files in an \+\_\+init\+Loc location to gather the full set of files.
+\item Features the ability to set one of the audio files as an /\+Intro/. When there is an intro file, playout of any audio file will be preceeded by the playout of the intro.
+\item Handles the statefulness of playing audio files including the Intro audio
+\item Thread-\/based so that it can handle stateful transitions and playout without any external polling or \textquotesingle{}babysitting\textquotesingle{} of the class.
+\item Volume controls via software -\/ not controlling an amplifier
+\item Allows for a pin to be utilized for controlling an amplifier as an on/off mechnism. The purpose here is about power savings. If the audio is primarily unused, this allows the amplifier to be turned off using a transitor or MOSFET to do so in hardware.
+\item Amplifier control pin can be active high or low via \+\_\+on\+Pin\+High
+\item \mbox{\hyperlink{class_audio_playlist_manager_ab1f9d20ddeba890238960a8a3055dcbe}{Play\+Random\+Entry()}} simply picks an entry from the list at random
+\item Audio file list can be managed via \mbox{\hyperlink{class_audio_playlist_manager_a734225f48ff565b5eac3157580b25294}{Clear\+File\+List()}} and \mbox{\hyperlink{class_audio_playlist_manager_aa048ddf99c20bcffbbb70e8132b71620}{Add\+Files\+From()}} 
+\end{DoxyItemize}
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}\label{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!State@{State}}
+\index{State@{State}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{State}{State}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{Audio\+Playlist\+Manager\+::\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Idle@{Idle}!AudioPlaylistManager@{AudioPlaylistManager}}\index{AudioPlaylistManager@{AudioPlaylistManager}!Idle@{Idle}}}\mbox{\Hypertarget{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ae04a2c6d43e63690308ce4e4df042713}\label{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ae04a2c6d43e63690308ce4e4df042713}} 
+Idle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PlayingIntro@{PlayingIntro}!AudioPlaylistManager@{AudioPlaylistManager}}\index{AudioPlaylistManager@{AudioPlaylistManager}!PlayingIntro@{PlayingIntro}}}\mbox{\Hypertarget{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ad24a1e1dfac48e34afe676369d0bbbea}\label{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ad24a1e1dfac48e34afe676369d0bbbea}} 
+Playing\+Intro&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PlayingSound@{PlayingSound}!AudioPlaylistManager@{AudioPlaylistManager}}\index{AudioPlaylistManager@{AudioPlaylistManager}!PlayingSound@{PlayingSound}}}\mbox{\Hypertarget{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a60b2efbc788f45a2e427c39a6fc8105d}\label{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a60b2efbc788f45a2e427c39a6fc8105d}} 
+Playing\+Sound&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Paused@{Paused}!AudioPlaylistManager@{AudioPlaylistManager}}\index{AudioPlaylistManager@{AudioPlaylistManager}!Paused@{Paused}}}\mbox{\Hypertarget{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a4ddca80fcf27e02c5939d0aa4a96da3b}\label{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a4ddca80fcf27e02c5939d0aa4a96da3b}} 
+Paused&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_audio_playlist_manager_a75e80155731c1ec26ca4f0ceb5757daf}\label{class_audio_playlist_manager_a75e80155731c1ec26ca4f0ceb5757daf}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!AudioPlaylistManager@{AudioPlaylistManager}}
+\index{AudioPlaylistManager@{AudioPlaylistManager}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{AudioPlaylistManager()}{AudioPlaylistManager()}}
+{\footnotesize\ttfamily Audio\+Playlist\+Manager\+::\+Audio\+Playlist\+Manager (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{esp32\+Timer,  }\item[{uint8\+\_\+t}]{esp32\+Pin,  }\item[{const char $\ast$}]{\+\_\+init\+Loc,  }\item[{uint8\+\_\+t}]{\+\_\+amp\+Control\+Pin = {\ttfamily 0},  }\item[{bool}]{\+\_\+on\+Pin\+High = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+instantiate the audio manager 
+
+
+\begin{DoxyParams}{Parameters}
+{\em esp32\+Timer} & -\/ there are 4 timers in the ESP32 \mbox{[}0-\/3\mbox{]} \\
+\hline
+{\em esp32\+Pin} & -\/ there are two DAC pins on the ESP32 -\/ 25 and 26 \\
+\hline
+{\em \+\_\+init\+Loc} & -\/ if non-\/null, this is the folder location which should populate the file list. \\
+\hline
+{\em \+\_\+amp\+Control\+Pin} & -\/ used for hardware control of the audio amplifier for playout \\
+\hline
+{\em \+\_\+on\+Pin\+High} & -\/ active high hardware control when true. Active low when false. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_audio_playlist_manager_aa048ddf99c20bcffbbb70e8132b71620}\label{class_audio_playlist_manager_aa048ddf99c20bcffbbb70e8132b71620}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!AddFilesFrom@{AddFilesFrom}}
+\index{AddFilesFrom@{AddFilesFrom}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{AddFilesFrom()}{AddFilesFrom()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Add\+Files\+From (\begin{DoxyParamCaption}\item[{const char $\ast$}]{\+\_\+dirname }\end{DoxyParamCaption})}
+
+
+
+Add (more) files to the current file list from a given \+\_\+dirname. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a734225f48ff565b5eac3157580b25294}\label{class_audio_playlist_manager_a734225f48ff565b5eac3157580b25294}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!ClearFileList@{ClearFileList}}
+\index{ClearFileList@{ClearFileList}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{ClearFileList()}{ClearFileList()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Clear\+File\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+the audio file list contents. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a3fc24d2e248d39393effc28f4851e879}\label{class_audio_playlist_manager_a3fc24d2e248d39393effc28f4851e879}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!GetFileList@{GetFileList}}
+\index{GetFileList@{GetFileList}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{GetFileList()}{GetFileList()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Get\+File\+List (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{f\+List }\end{DoxyParamCaption})}
+
+
+
+Obtain the current audio list as a vector of strings f\+List. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a3b342cdf36f1f1b1fc91a5876df1ba03}\label{class_audio_playlist_manager_a3b342cdf36f1f1b1fc91a5876df1ba03}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!GetFiles@{GetFiles}}
+\index{GetFiles@{GetFiles}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{GetFiles()}{GetFiles()}}
+{\footnotesize\ttfamily bool Audio\+Playlist\+Manager\+::\+Get\+Files (\begin{DoxyParamCaption}\item[{const char $\ast$}]{dir\+Location,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{file\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Worker function for iterating through the files in a folder. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a424b7b13f64892063ec6d261e5ab2d2c}\label{class_audio_playlist_manager_a424b7b13f64892063ec6d261e5ab2d2c}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!NextState@{NextState}}
+\index{NextState@{NextState}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{NextState()}{NextState()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Next\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}}}]{next\+State }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Stateful transition utility for the thread. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_af739dfecae89af5842a317a97123ac88}\label{class_audio_playlist_manager_af739dfecae89af5842a317a97123ac88}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!Pause@{Pause}}
+\index{Pause@{Pause}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Play/pause control. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a7df2f03c194129861476c8d3ebd96a5f}\label{class_audio_playlist_manager_a7df2f03c194129861476c8d3ebd96a5f}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!Play@{Play}}
+\index{Play@{Play}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{Play()}{Play()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Play/pause control. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_added299841e59e566d1544135505eb9c}\label{class_audio_playlist_manager_added299841e59e566d1544135505eb9c}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!PlayEntryIndex@{PlayEntryIndex}}
+\index{PlayEntryIndex@{PlayEntryIndex}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{PlayEntryIndex()}{PlayEntryIndex()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Play\+Entry\+Index (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{entry\+Num }\end{DoxyParamCaption})}
+
+
+
+Setting the file to play out via the index. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a5d53845fa497f544ea7408b8f25bc027}\label{class_audio_playlist_manager_a5d53845fa497f544ea7408b8f25bc027}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!PlayEntryName@{PlayEntryName}}
+\index{PlayEntryName@{PlayEntryName}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{PlayEntryName()}{PlayEntryName()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Play\+Entry\+Name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})}
+
+
+
+Setting the file to playout via the name of the file sans folder name. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_ab1f9d20ddeba890238960a8a3055dcbe}\label{class_audio_playlist_manager_ab1f9d20ddeba890238960a8a3055dcbe}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!PlayRandomEntry@{PlayRandomEntry}}
+\index{PlayRandomEntry@{PlayRandomEntry}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{PlayRandomEntry()}{PlayRandomEntry()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Play\+Random\+Entry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Simply allows a random entry from the list to be played. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_aa33f498ccc46394f62eb548c1fecfe8a}\label{class_audio_playlist_manager_aa33f498ccc46394f62eb548c1fecfe8a}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!printDataTable@{printDataTable}}
+\index{printDataTable@{printDataTable}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{printDataTable()}{printDataTable()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::print\+Data\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Utility/debug routine for printing the modified values given the volume setting. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a785bf7515b5aad3e6c61d03a488a3c67}\label{class_audio_playlist_manager_a785bf7515b5aad3e6c61d03a488a3c67}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!Run@{Run}}
+\index{Run@{Run}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles stateful playout of intro and desired audio clip in a thread. 
+
+
+
+Implements \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Robo\+Task}}.
+
+\mbox{\Hypertarget{class_audio_playlist_manager_ab52406b76607da647e312b99eaa03583}\label{class_audio_playlist_manager_ab52406b76607da647e312b99eaa03583}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!SetAmpPower@{SetAmpPower}}
+\index{SetAmpPower@{SetAmpPower}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{SetAmpPower()}{SetAmpPower()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Set\+Amp\+Power (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+on }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Turns on or off the amplifier power. This is managed by the thread internally. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_afb37c268ad1e583a2dcfbeb648e71f0f}\label{class_audio_playlist_manager_afb37c268ad1e583a2dcfbeb648e71f0f}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!SetIntroSoundIndex@{SetIntroSoundIndex}}
+\index{SetIntroSoundIndex@{SetIntroSoundIndex}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{SetIntroSoundIndex()}{SetIntroSoundIndex()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Set\+Intro\+Sound\+Index (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{entry\+Num }\end{DoxyParamCaption})}
+
+
+
+Setting the intro sound file via the index. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a4106bd2d44f44b4af681678d98e1380f}\label{class_audio_playlist_manager_a4106bd2d44f44b4af681678d98e1380f}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!SetIntroSoundName@{SetIntroSoundName}}
+\index{SetIntroSoundName@{SetIntroSoundName}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{SetIntroSoundName()}{SetIntroSoundName()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Set\+Intro\+Sound\+Name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})}
+
+
+
+Setting the intro sound file via the name of the file sans folder name. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a4236ca64ffd9f94d0a48bd8396c6e897}\label{class_audio_playlist_manager_a4236ca64ffd9f94d0a48bd8396c6e897}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!SetVolume@{SetVolume}}
+\index{SetVolume@{SetVolume}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{SetVolume()}{SetVolume()}}
+{\footnotesize\ttfamily void Audio\+Playlist\+Manager\+::\+Set\+Volume (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{\+\_\+vol }\end{DoxyParamCaption})}
+
+
+
+Sets the volume level (in software) from 0-\/100. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_audio_playlist_manager_a5e47e5d001afdd1a53dfcba55e1e8b88}\label{class_audio_playlist_manager_a5e47e5d001afdd1a53dfcba55e1e8b88}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!ampPowerPin@{ampPowerPin}}
+\index{ampPowerPin@{ampPowerPin}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{ampPowerPin}{ampPowerPin}}
+{\footnotesize\ttfamily uint8\+\_\+t Audio\+Playlist\+Manager\+::amp\+Power\+Pin\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a71b400b480d951e49edb94a661e0bc8c}\label{class_audio_playlist_manager_a71b400b480d951e49edb94a661e0bc8c}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!ampPowerPinHigh@{ampPowerPinHigh}}
+\index{ampPowerPinHigh@{ampPowerPinHigh}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{ampPowerPinHigh}{ampPowerPinHigh}}
+{\footnotesize\ttfamily bool Audio\+Playlist\+Manager\+::amp\+Power\+Pin\+High\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_audio_playlist_manager_aa9bcd1ca4e71ccf2a21c90092e1c52b7}\label{class_audio_playlist_manager_aa9bcd1ca4e71ccf2a21c90092e1c52b7}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!curState@{curState}}
+\index{curState@{curState}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{curState}{curState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}} Audio\+Playlist\+Manager\+::cur\+State\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a8bae8cada278f30ca71c7fe5e035916d}\label{class_audio_playlist_manager_a8bae8cada278f30ca71c7fe5e035916d}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!entryNumberForIntro@{entryNumberForIntro}}
+\index{entryNumberForIntro@{entryNumberForIntro}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{entryNumberForIntro}{entryNumberForIntro}}
+{\footnotesize\ttfamily int16\+\_\+t Audio\+Playlist\+Manager\+::entry\+Number\+For\+Intro\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_audio_playlist_manager_af313e2007cdcec9872afd6b1d5546e24}\label{class_audio_playlist_manager_af313e2007cdcec9872afd6b1d5546e24}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!entryNumberToPlay@{entryNumberToPlay}}
+\index{entryNumberToPlay@{entryNumberToPlay}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{entryNumberToPlay}{entryNumberToPlay}}
+{\footnotesize\ttfamily int16\+\_\+t Audio\+Playlist\+Manager\+::entry\+Number\+To\+Play\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_audio_playlist_manager_a054f576369ce00ad73375e3d6ad83440}\label{class_audio_playlist_manager_a054f576369ce00ad73375e3d6ad83440}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!filenames@{filenames}}
+\index{filenames@{filenames}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{filenames}{filenames}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Audio\+Playlist\+Manager\+::filenames\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+List of audio file names ready to be played. 
+
+\mbox{\Hypertarget{class_audio_playlist_manager_ad9865e853908f957394af92cae6ded4a}\label{class_audio_playlist_manager_ad9865e853908f957394af92cae6ded4a}} 
+\index{AudioPlaylistManager@{AudioPlaylistManager}!pAFP@{pAFP}}
+\index{pAFP@{pAFP}!AudioPlaylistManager@{AudioPlaylistManager}}
+\doxysubsubsection{\texorpdfstring{pAFP}{pAFP}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{class_audio_file_player}{Audio\+File\+Player}}$>$ Audio\+Playlist\+Manager\+::p\+AFP\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Single instance of the \mbox{\hyperlink{class_audio_file_player}{Audio\+File\+Player}} which is re-\/used for each playout. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_audio_playlist_manager_8h}{Audio\+Playlist\+Manager.\+h}}\item 
+src/\mbox{\hyperlink{_audio_playlist_manager_8cpp}{Audio\+Playlist\+Manager.\+cpp}}\end{DoxyCompactItemize}

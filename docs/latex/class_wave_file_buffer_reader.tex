@@ -1,0 +1,522 @@
+\hypertarget{class_wave_file_buffer_reader}{}\doxysection{Wave\+File\+Buffer\+Reader Class Reference}
+\label{class_wave_file_buffer_reader}\index{WaveFileBufferReader@{WaveFileBufferReader}}
+
+
+Workerbee class for handling a single audio file -\/ parsing and buffer management.  
+
+
+
+
+{\ttfamily \#include $<$Wave\+File\+Buffer\+Reader.\+h$>$}
+
+Inheritance diagram for Wave\+File\+Buffer\+Reader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_wave_file_buffer_reader}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wave_file_buffer_reader_adcaa4c5c3a6ff3b5d8f0b752d0834f6a}{Wave\+File\+Buffer\+Reader}} (const char $\ast$fname, uint16\+\_\+t ramp\+Timing=500)
+\begin{DoxyCompactList}\small\item\em Constructor requires the filename to use. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wave_file_buffer_reader_a4fe4eda192e2700dfcfd2a83b226df86}{$\sim$\+Wave\+File\+Buffer\+Reader}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_aaa6363190fa2645a978f78b253057d23}{Run}} ()
+\begin{DoxyCompactList}\small\item\em Thread-\/based processing automates the reading / re-\/filling operation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_afa5ba61fe37b80e7174bd99c698c3432}{print\+File\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Utility method for knowing what kind of file is being processed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_a5691fea3a1c5f02d01acaaec40852952}{is\+Playback\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Indicates when the actual file playout is complete. This is known by the fact that the read pointer has reached the write pointer after file reading is complete. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_a7d08d4ab4e1bfb9167f03bfd14b665a5}{is\+File\+Read\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Indicates when the reading of the WAVE file is fully complete and in memory. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a17da48a335be84c6d4b8f7f9f56aa1de}{get\+Buffer\+Full\+Percentage}} ()
+\begin{DoxyCompactList}\small\item\em Based upon the chosen and allocated memory buffer size, gives 0-\/100 result of fullness. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a59948ce9ccd0e75a343f0c82ab606004}{get\+File\+Read\+Percentage}} ()
+\begin{DoxyCompactList}\small\item\em Returns how far into the file we are as a percentage 0-\/100 at any given moment. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a2b397923269677eabc74e4339e553fb4}{get\+Sample\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Returns the parsed sample rate in bits per second. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a6707cba1819b9d073866e1eee48cdfc0}{get\+Last\+Byte\+Of\+File}} ()
+\begin{DoxyCompactList}\small\item\em The last byte of the file is useful for the ramp-\/out calculation. Internal, primarily. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a23fba242b95ec3eb4b1a9eadf2ec85ca}{get\+Read\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Return the address of the read pointer at any moment in time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_aac6d0c066044e414ed0d7157fa3767e8}{advance\+Read\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Bump the read pointer by one address and wrap around if necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_adbde99135916bba37155b5558ae84552}{WAV\+\_\+\+HEADER}} = 46
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a3c0b8c6c87c7a49bc0518fdd0b0c879b}{WAV\+\_\+\+HEADER\+\_\+\+TO\+\_\+\+CHUNKLEN}} = 20
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_afd80ed2b6962b38e443ea3fffe6b7b75}{ramp\+Time}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_wave_file_buffer_reader_a576774f21df4a4f9cc26bb6db3add7fe}{open}} (const char $\ast$fname)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for opening the file on a variety of filesystems. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_wave_file_buffer_reader_ab298d8cf908a324ea811cab1d357dec4}{read}} (uint8\+\_\+t $\ast$p\+Dest, size\+\_\+t num\+Bytes)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for reading bytes and handling EOF and read errors. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_wave_file_buffer_reader_a01385181e00d6d2a95bcfb20f0bbbd4a}{close}} (void)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for closing the file. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_wave_file_buffer_reader_a488eac9fd1428870b84f019f410b6040}{seek\+Rel}} (long offset)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for seeking, relatively, forward or backward from current location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_a021ede7ac7f212e31a769361bb643230}{read\+And\+Process\+Wav\+Header}} (void)
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_a03b154a1dea690b6dd3cc54f00005f5f}{read\+First\+Byte\+And\+Prep\+Ramp\+In}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_abc46d9ce99d708dfe25b0c5c2a87d525}{prep\+Ramp\+Out}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_acf9a34ca8975e5fe452540737bd99d3f}{buffer\+Alloc}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_a857a9875fb1dc259519434244e937637}{buffer\+Fill}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_wave_file_buffer_reader_a7055f1c6095b7872e707c11e17a4f073}{file\+Name}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_ad87172d333233dce44065eab7908b10c}{b\+Is\+Ramp\+Out\+Complete}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a10b43a47fc795d6a385d695d72172f18}{p\+Wav\+Buffer}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a28c7ac4fddc3bc382d8d460d350c2351}{p\+Buffer\+Read}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_ac510ed531845728a7fc022d6c9308524}{p\+Buffer\+Write}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a6fabdfc810d10ce448cc672d10454673}{length\+Wav\+Buffer}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a388b74fd82e90932c3be34a1929fd052}{last\+Byte\+Value\+Of\+File}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_aa99158aa52c30ad13da2d3454028158b}{b\+Is\+First\+Fill}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_af847599df71d16b79ea3cd9b5608267c}{b\+Is\+Buffer\+Ready}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_ac2aa862a1703a9d02fc4edb260981ed1}{b\+Is\+Done\+Reading\+File}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_aa0e75f153e660231ae0de51352dd0e53}{index\+Not\+Sure\+What\+Yet}}
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a404af348926a6ffec2c9aa8819241e5d}{p\+Header}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_aa7f9fa75ebd61fa41d037da00cbdd8d4}{fill\+Sleep\+Time}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a0e03028581858e00ae486b27a65fcbc4}{buffer\+Byte\+Rates}} \mbox{[}\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}}\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_aa255f56524e6ac44598c7b685923b275}{buffer\+Sizes}} \mbox{[}\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}}\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_ab0ca47d087dc1923ce29af7046bab744}{total\+Wav\+Bytes\+Read\+So\+Far}}
+\item 
+int \mbox{\hyperlink{class_wave_file_buffer_reader_a8b46e0606bb9c5eb454a88a3d75f5fc4}{percent\+Complete}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_abad4da8ccb98ef3ca07f50f18f440063}{num\+Channels}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a0945f5dba6c4f42f6eb9101ed7fe3c62}{bits\+Per\+Sample}}
+\item 
+unsigned long \mbox{\hyperlink{class_wave_file_buffer_reader_a34110997615565b70983b2045d2a3081}{sample\+Rate}}
+\item 
+unsigned long \mbox{\hyperlink{class_wave_file_buffer_reader_af71fcedf0857501268288419165837af}{byte\+Rate}}
+\item 
+unsigned long \mbox{\hyperlink{class_wave_file_buffer_reader_a7a9ab3e904e02d80401b3ae84c3c5186}{total\+Wave\+Bytes}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}} = 6
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Workerbee class for handling a single audio file -\/ parsing and buffer management. 
+
+This is the base class for the other Wave\+File$<$filesystem$>$Reader classes. Features\+:
+\begin{DoxyItemize}
+\item Thread-\/based WAVE file processing to manage buffer fullness without external controls.
+\item Reduce or eliminate popping sound at the speaker by use of the ramp\+Timing which uses the 8-\/bit DAC value of 0x7f as the \textquotesingle{}zero point\textquotesingle{}
+\item Buffer filling attempts to be smart about how much it fills at any given call for \mbox{\hyperlink{class_wave_file_buffer_reader_a857a9875fb1dc259519434244e937637}{buffer\+Fill()}} and splits its filling/reading operations into at most 2 operations which might straddle the end of the buffeer (wrap-\/around case)
+\item Buffer size allocation is based upon byte\+Rate, number of channels, resolution and rate.
+\item Fairly complete WAV header processing ability in order to support as wide a variety as possible of PCM-\/based WAV / RIF files. 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_wave_file_buffer_reader_adcaa4c5c3a6ff3b5d8f0b752d0834f6a}\label{class_wave_file_buffer_reader_adcaa4c5c3a6ff3b5d8f0b752d0834f6a}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!WaveFileBufferReader@{WaveFileBufferReader}}
+\index{WaveFileBufferReader@{WaveFileBufferReader}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{WaveFileBufferReader()}{WaveFileBufferReader()}}
+{\footnotesize\ttfamily Wave\+File\+Buffer\+Reader\+::\+Wave\+File\+Buffer\+Reader (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname,  }\item[{uint16\+\_\+t}]{ramp\+Timing = {\ttfamily 500} }\end{DoxyParamCaption})}
+
+
+
+Constructor requires the filename to use. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & -\/ Filename to open/process/buffer \\
+\hline
+{\em ramp\+Timing} & -\/ optional -\/ time in milliseconds to do ramp-\/in and ramp-\/out of the DAC/speaker. This is in order to minimize or eliminate \textquotesingle{}popping\textquotesingle{} at playout and finish time. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a4fe4eda192e2700dfcfd2a83b226df86}\label{class_wave_file_buffer_reader_a4fe4eda192e2700dfcfd2a83b226df86}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!````~WaveFileBufferReader@{$\sim$WaveFileBufferReader}}
+\index{````~WaveFileBufferReader@{$\sim$WaveFileBufferReader}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{$\sim$WaveFileBufferReader()}{~WaveFileBufferReader()}}
+{\footnotesize\ttfamily Wave\+File\+Buffer\+Reader\+::$\sim$\+Wave\+File\+Buffer\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_wave_file_buffer_reader_aac6d0c066044e414ed0d7157fa3767e8}\label{class_wave_file_buffer_reader_aac6d0c066044e414ed0d7157fa3767e8}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!advanceReadPointer@{advanceReadPointer}}
+\index{advanceReadPointer@{advanceReadPointer}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{advanceReadPointer()}{advanceReadPointer()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::advance\+Read\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Bump the read pointer by one address and wrap around if necessary. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_acf9a34ca8975e5fe452540737bd99d3f}\label{class_wave_file_buffer_reader_acf9a34ca8975e5fe452540737bd99d3f}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bufferAlloc@{bufferAlloc}}
+\index{bufferAlloc@{bufferAlloc}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bufferAlloc()}{bufferAlloc()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::buffer\+Alloc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a857a9875fb1dc259519434244e937637}\label{class_wave_file_buffer_reader_a857a9875fb1dc259519434244e937637}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bufferFill@{bufferFill}}
+\index{bufferFill@{bufferFill}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bufferFill()}{bufferFill()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::buffer\+Fill (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a01385181e00d6d2a95bcfb20f0bbbd4a}\label{class_wave_file_buffer_reader_a01385181e00d6d2a95bcfb20f0bbbd4a}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!close@{close}}
+\index{close@{close}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily virtual void Wave\+File\+Buffer\+Reader\+::close (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Abstract function for closing the file. 
+
+
+
+Implemented in \mbox{\hyperlink{class_wave_file_little_f_s_reader_a83ed75228c951e470b4c611dd3ce2a3c}{Wave\+File\+Little\+FSReader}}, \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a569bb0821331be6989df4408847295ac}{Wave\+File\+SPIFFSReader}}, and \mbox{\hyperlink{class_wave_file_stdio_reader_a30ab119ccd148c38f740509f435894b1}{Wave\+File\+Stdio\+Reader}}.
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a17da48a335be84c6d4b8f7f9f56aa1de}\label{class_wave_file_buffer_reader_a17da48a335be84c6d4b8f7f9f56aa1de}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!getBufferFullPercentage@{getBufferFullPercentage}}
+\index{getBufferFullPercentage@{getBufferFullPercentage}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{getBufferFullPercentage()}{getBufferFullPercentage()}}
+{\footnotesize\ttfamily uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::get\+Buffer\+Full\+Percentage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Based upon the chosen and allocated memory buffer size, gives 0-\/100 result of fullness. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a59948ce9ccd0e75a343f0c82ab606004}\label{class_wave_file_buffer_reader_a59948ce9ccd0e75a343f0c82ab606004}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!getFileReadPercentage@{getFileReadPercentage}}
+\index{getFileReadPercentage@{getFileReadPercentage}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{getFileReadPercentage()}{getFileReadPercentage()}}
+{\footnotesize\ttfamily uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::get\+File\+Read\+Percentage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns how far into the file we are as a percentage 0-\/100 at any given moment. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a6707cba1819b9d073866e1eee48cdfc0}\label{class_wave_file_buffer_reader_a6707cba1819b9d073866e1eee48cdfc0}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!getLastByteOfFile@{getLastByteOfFile}}
+\index{getLastByteOfFile@{getLastByteOfFile}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{getLastByteOfFile()}{getLastByteOfFile()}}
+{\footnotesize\ttfamily uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::get\+Last\+Byte\+Of\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The last byte of the file is useful for the ramp-\/out calculation. Internal, primarily. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a23fba242b95ec3eb4b1a9eadf2ec85ca}\label{class_wave_file_buffer_reader_a23fba242b95ec3eb4b1a9eadf2ec85ca}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!getReadPointer@{getReadPointer}}
+\index{getReadPointer@{getReadPointer}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{getReadPointer()}{getReadPointer()}}
+{\footnotesize\ttfamily uint8\+\_\+t $\ast$ Wave\+File\+Buffer\+Reader\+::get\+Read\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return the address of the read pointer at any moment in time. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a2b397923269677eabc74e4339e553fb4}\label{class_wave_file_buffer_reader_a2b397923269677eabc74e4339e553fb4}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!getSampleRate@{getSampleRate}}
+\index{getSampleRate@{getSampleRate}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{getSampleRate()}{getSampleRate()}}
+{\footnotesize\ttfamily uint32\+\_\+t Wave\+File\+Buffer\+Reader\+::get\+Sample\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the parsed sample rate in bits per second. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a7d08d4ab4e1bfb9167f03bfd14b665a5}\label{class_wave_file_buffer_reader_a7d08d4ab4e1bfb9167f03bfd14b665a5}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!isFileReadComplete@{isFileReadComplete}}
+\index{isFileReadComplete@{isFileReadComplete}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{isFileReadComplete()}{isFileReadComplete()}}
+{\footnotesize\ttfamily bool Wave\+File\+Buffer\+Reader\+::is\+File\+Read\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Indicates when the reading of the WAVE file is fully complete and in memory. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a5691fea3a1c5f02d01acaaec40852952}\label{class_wave_file_buffer_reader_a5691fea3a1c5f02d01acaaec40852952}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!isPlaybackComplete@{isPlaybackComplete}}
+\index{isPlaybackComplete@{isPlaybackComplete}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{isPlaybackComplete()}{isPlaybackComplete()}}
+{\footnotesize\ttfamily bool Wave\+File\+Buffer\+Reader\+::is\+Playback\+Complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Indicates when the actual file playout is complete. This is known by the fact that the read pointer has reached the write pointer after file reading is complete. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a576774f21df4a4f9cc26bb6db3add7fe}\label{class_wave_file_buffer_reader_a576774f21df4a4f9cc26bb6db3add7fe}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!open@{open}}
+\index{open@{open}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily virtual bool Wave\+File\+Buffer\+Reader\+::open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Abstract function for opening the file on a variety of filesystems. 
+
+
+
+Implemented in \mbox{\hyperlink{class_wave_file_little_f_s_reader_a4d20d097ecc1919b4dff117ddb8fe66d}{Wave\+File\+Little\+FSReader}}, \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a36afe61dd72ca4be50467e7190bc93d0}{Wave\+File\+SPIFFSReader}}, and \mbox{\hyperlink{class_wave_file_stdio_reader_a97c4d6f767d7ef449c09eaedb31afd98}{Wave\+File\+Stdio\+Reader}}.
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_abc46d9ce99d708dfe25b0c5c2a87d525}\label{class_wave_file_buffer_reader_abc46d9ce99d708dfe25b0c5c2a87d525}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!prepRampOut@{prepRampOut}}
+\index{prepRampOut@{prepRampOut}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{prepRampOut()}{prepRampOut()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::prep\+Ramp\+Out (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_afa5ba61fe37b80e7174bd99c698c3432}\label{class_wave_file_buffer_reader_afa5ba61fe37b80e7174bd99c698c3432}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!printFileInfo@{printFileInfo}}
+\index{printFileInfo@{printFileInfo}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{printFileInfo()}{printFileInfo()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::print\+File\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Utility method for knowing what kind of file is being processed. 
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_ab298d8cf908a324ea811cab1d357dec4}\label{class_wave_file_buffer_reader_ab298d8cf908a324ea811cab1d357dec4}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!read@{read}}
+\index{read@{read}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily virtual bool Wave\+File\+Buffer\+Reader\+::read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{p\+Dest,  }\item[{size\+\_\+t}]{num\+Bytes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Abstract function for reading bytes and handling EOF and read errors. 
+
+
+
+Implemented in \mbox{\hyperlink{class_wave_file_little_f_s_reader_a2831da01ae5abc184249dca51355ee8a}{Wave\+File\+Little\+FSReader}}, \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a1dd9755ba1ed962c2f52f2fffdb9b496}{Wave\+File\+SPIFFSReader}}, and \mbox{\hyperlink{class_wave_file_stdio_reader_a6b694d21923f041a217eb1b37c6d192a}{Wave\+File\+Stdio\+Reader}}.
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a021ede7ac7f212e31a769361bb643230}\label{class_wave_file_buffer_reader_a021ede7ac7f212e31a769361bb643230}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!readAndProcessWavHeader@{readAndProcessWavHeader}}
+\index{readAndProcessWavHeader@{readAndProcessWavHeader}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{readAndProcessWavHeader()}{readAndProcessWavHeader()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::read\+And\+Process\+Wav\+Header (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a03b154a1dea690b6dd3cc54f00005f5f}\label{class_wave_file_buffer_reader_a03b154a1dea690b6dd3cc54f00005f5f}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!readFirstByteAndPrepRampIn@{readFirstByteAndPrepRampIn}}
+\index{readFirstByteAndPrepRampIn@{readFirstByteAndPrepRampIn}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{readFirstByteAndPrepRampIn()}{readFirstByteAndPrepRampIn()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::read\+First\+Byte\+And\+Prep\+Ramp\+In (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_aaa6363190fa2645a978f78b253057d23}\label{class_wave_file_buffer_reader_aaa6363190fa2645a978f78b253057d23}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!Run@{Run}}
+\index{Run@{Run}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Wave\+File\+Buffer\+Reader\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Thread-\/based processing automates the reading / re-\/filling operation. 
+
+
+
+Implements \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Robo\+Task}}.
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a488eac9fd1428870b84f019f410b6040}\label{class_wave_file_buffer_reader_a488eac9fd1428870b84f019f410b6040}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!seekRel@{seekRel}}
+\index{seekRel@{seekRel}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{seekRel()}{seekRel()}}
+{\footnotesize\ttfamily virtual bool Wave\+File\+Buffer\+Reader\+::seek\+Rel (\begin{DoxyParamCaption}\item[{long}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Abstract function for seeking, relatively, forward or backward from current location. 
+
+
+
+Implemented in \mbox{\hyperlink{class_wave_file_little_f_s_reader_ab03fd5b1154ed53b10192fdeb2281fa6}{Wave\+File\+Little\+FSReader}}, \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_ac952f1c35ede4e90270bc78bd144215c}{Wave\+File\+SPIFFSReader}}, and \mbox{\hyperlink{class_wave_file_stdio_reader_a0ae4aeaf9369c0c349ee9eca6bf087f7}{Wave\+File\+Stdio\+Reader}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_wave_file_buffer_reader_af847599df71d16b79ea3cd9b5608267c}\label{class_wave_file_buffer_reader_af847599df71d16b79ea3cd9b5608267c}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bIsBufferReady@{bIsBufferReady}}
+\index{bIsBufferReady@{bIsBufferReady}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bIsBufferReady}{bIsBufferReady}}
+{\footnotesize\ttfamily bool Wave\+File\+Buffer\+Reader\+::b\+Is\+Buffer\+Ready\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_ac2aa862a1703a9d02fc4edb260981ed1}\label{class_wave_file_buffer_reader_ac2aa862a1703a9d02fc4edb260981ed1}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bIsDoneReadingFile@{bIsDoneReadingFile}}
+\index{bIsDoneReadingFile@{bIsDoneReadingFile}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bIsDoneReadingFile}{bIsDoneReadingFile}}
+{\footnotesize\ttfamily bool Wave\+File\+Buffer\+Reader\+::b\+Is\+Done\+Reading\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_aa99158aa52c30ad13da2d3454028158b}\label{class_wave_file_buffer_reader_aa99158aa52c30ad13da2d3454028158b}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bIsFirstFill@{bIsFirstFill}}
+\index{bIsFirstFill@{bIsFirstFill}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bIsFirstFill}{bIsFirstFill}}
+{\footnotesize\ttfamily bool Wave\+File\+Buffer\+Reader\+::b\+Is\+First\+Fill\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_ad87172d333233dce44065eab7908b10c}\label{class_wave_file_buffer_reader_ad87172d333233dce44065eab7908b10c}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bIsRampOutComplete@{bIsRampOutComplete}}
+\index{bIsRampOutComplete@{bIsRampOutComplete}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bIsRampOutComplete}{bIsRampOutComplete}}
+{\footnotesize\ttfamily bool Wave\+File\+Buffer\+Reader\+::b\+Is\+Ramp\+Out\+Complete\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a0945f5dba6c4f42f6eb9101ed7fe3c62}\label{class_wave_file_buffer_reader_a0945f5dba6c4f42f6eb9101ed7fe3c62}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bitsPerSample@{bitsPerSample}}
+\index{bitsPerSample@{bitsPerSample}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bitsPerSample}{bitsPerSample}}
+{\footnotesize\ttfamily uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::bits\+Per\+Sample\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a0e03028581858e00ae486b27a65fcbc4}\label{class_wave_file_buffer_reader_a0e03028581858e00ae486b27a65fcbc4}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bufferByteRates@{bufferByteRates}}
+\index{bufferByteRates@{bufferByteRates}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bufferByteRates}{bufferByteRates}}
+{\footnotesize\ttfamily uint32\+\_\+t Wave\+File\+Buffer\+Reader\+::buffer\+Byte\+Rates\mbox{[}\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_aa255f56524e6ac44598c7b685923b275}\label{class_wave_file_buffer_reader_aa255f56524e6ac44598c7b685923b275}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!bufferSizes@{bufferSizes}}
+\index{bufferSizes@{bufferSizes}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{bufferSizes}{bufferSizes}}
+{\footnotesize\ttfamily uint32\+\_\+t Wave\+File\+Buffer\+Reader\+::buffer\+Sizes\mbox{[}\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_af71fcedf0857501268288419165837af}\label{class_wave_file_buffer_reader_af71fcedf0857501268288419165837af}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!byteRate@{byteRate}}
+\index{byteRate@{byteRate}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{byteRate}{byteRate}}
+{\footnotesize\ttfamily unsigned long Wave\+File\+Buffer\+Reader\+::byte\+Rate\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a7055f1c6095b7872e707c11e17a4f073}\label{class_wave_file_buffer_reader_a7055f1c6095b7872e707c11e17a4f073}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!fileName@{fileName}}
+\index{fileName@{fileName}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{fileName}{fileName}}
+{\footnotesize\ttfamily std\+::string Wave\+File\+Buffer\+Reader\+::file\+Name\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_aa7f9fa75ebd61fa41d037da00cbdd8d4}\label{class_wave_file_buffer_reader_aa7f9fa75ebd61fa41d037da00cbdd8d4}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!fillSleepTime@{fillSleepTime}}
+\index{fillSleepTime@{fillSleepTime}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{fillSleepTime}{fillSleepTime}}
+{\footnotesize\ttfamily uint32\+\_\+t Wave\+File\+Buffer\+Reader\+::fill\+Sleep\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_aa0e75f153e660231ae0de51352dd0e53}\label{class_wave_file_buffer_reader_aa0e75f153e660231ae0de51352dd0e53}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!indexNotSureWhatYet@{indexNotSureWhatYet}}
+\index{indexNotSureWhatYet@{indexNotSureWhatYet}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{indexNotSureWhatYet}{indexNotSureWhatYet}}
+{\footnotesize\ttfamily uint32\+\_\+t Wave\+File\+Buffer\+Reader\+::index\+Not\+Sure\+What\+Yet\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a388b74fd82e90932c3be34a1929fd052}\label{class_wave_file_buffer_reader_a388b74fd82e90932c3be34a1929fd052}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!lastByteValueOfFile@{lastByteValueOfFile}}
+\index{lastByteValueOfFile@{lastByteValueOfFile}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{lastByteValueOfFile}{lastByteValueOfFile}}
+{\footnotesize\ttfamily uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::last\+Byte\+Value\+Of\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a6fabdfc810d10ce448cc672d10454673}\label{class_wave_file_buffer_reader_a6fabdfc810d10ce448cc672d10454673}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!lengthWavBuffer@{lengthWavBuffer}}
+\index{lengthWavBuffer@{lengthWavBuffer}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{lengthWavBuffer}{lengthWavBuffer}}
+{\footnotesize\ttfamily uint32\+\_\+t Wave\+File\+Buffer\+Reader\+::length\+Wav\+Buffer\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}\label{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!MAX\_SIZES\_COUNT@{MAX\_SIZES\_COUNT}}
+\index{MAX\_SIZES\_COUNT@{MAX\_SIZES\_COUNT}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{MAX\_SIZES\_COUNT}{MAX\_SIZES\_COUNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::\+MAX\+\_\+\+SIZES\+\_\+\+COUNT = 6\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_abad4da8ccb98ef3ca07f50f18f440063}\label{class_wave_file_buffer_reader_abad4da8ccb98ef3ca07f50f18f440063}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!numChannels@{numChannels}}
+\index{numChannels@{numChannels}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{numChannels}{numChannels}}
+{\footnotesize\ttfamily uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::num\+Channels\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a28c7ac4fddc3bc382d8d460d350c2351}\label{class_wave_file_buffer_reader_a28c7ac4fddc3bc382d8d460d350c2351}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!pBufferRead@{pBufferRead}}
+\index{pBufferRead@{pBufferRead}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{pBufferRead}{pBufferRead}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ Wave\+File\+Buffer\+Reader\+::p\+Buffer\+Read\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_ac510ed531845728a7fc022d6c9308524}\label{class_wave_file_buffer_reader_ac510ed531845728a7fc022d6c9308524}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!pBufferWrite@{pBufferWrite}}
+\index{pBufferWrite@{pBufferWrite}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{pBufferWrite}{pBufferWrite}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ Wave\+File\+Buffer\+Reader\+::p\+Buffer\+Write\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a8b46e0606bb9c5eb454a88a3d75f5fc4}\label{class_wave_file_buffer_reader_a8b46e0606bb9c5eb454a88a3d75f5fc4}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!percentComplete@{percentComplete}}
+\index{percentComplete@{percentComplete}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{percentComplete}{percentComplete}}
+{\footnotesize\ttfamily int Wave\+File\+Buffer\+Reader\+::percent\+Complete\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a404af348926a6ffec2c9aa8819241e5d}\label{class_wave_file_buffer_reader_a404af348926a6ffec2c9aa8819241e5d}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!pHeader@{pHeader}}
+\index{pHeader@{pHeader}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{pHeader}{pHeader}}
+{\footnotesize\ttfamily unsigned char$\ast$ Wave\+File\+Buffer\+Reader\+::p\+Header\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a10b43a47fc795d6a385d695d72172f18}\label{class_wave_file_buffer_reader_a10b43a47fc795d6a385d695d72172f18}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!pWavBuffer@{pWavBuffer}}
+\index{pWavBuffer@{pWavBuffer}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{pWavBuffer}{pWavBuffer}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ Wave\+File\+Buffer\+Reader\+::p\+Wav\+Buffer\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_afd80ed2b6962b38e443ea3fffe6b7b75}\label{class_wave_file_buffer_reader_afd80ed2b6962b38e443ea3fffe6b7b75}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!rampTime@{rampTime}}
+\index{rampTime@{rampTime}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{rampTime}{rampTime}}
+{\footnotesize\ttfamily const uint16\+\_\+t Wave\+File\+Buffer\+Reader\+::ramp\+Time}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a34110997615565b70983b2045d2a3081}\label{class_wave_file_buffer_reader_a34110997615565b70983b2045d2a3081}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!sampleRate@{sampleRate}}
+\index{sampleRate@{sampleRate}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{sampleRate}{sampleRate}}
+{\footnotesize\ttfamily unsigned long Wave\+File\+Buffer\+Reader\+::sample\+Rate\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_ab0ca47d087dc1923ce29af7046bab744}\label{class_wave_file_buffer_reader_ab0ca47d087dc1923ce29af7046bab744}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!totalWavBytesReadSoFar@{totalWavBytesReadSoFar}}
+\index{totalWavBytesReadSoFar@{totalWavBytesReadSoFar}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{totalWavBytesReadSoFar}{totalWavBytesReadSoFar}}
+{\footnotesize\ttfamily uint32\+\_\+t Wave\+File\+Buffer\+Reader\+::total\+Wav\+Bytes\+Read\+So\+Far\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a7a9ab3e904e02d80401b3ae84c3c5186}\label{class_wave_file_buffer_reader_a7a9ab3e904e02d80401b3ae84c3c5186}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!totalWaveBytes@{totalWaveBytes}}
+\index{totalWaveBytes@{totalWaveBytes}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{totalWaveBytes}{totalWaveBytes}}
+{\footnotesize\ttfamily unsigned long Wave\+File\+Buffer\+Reader\+::total\+Wave\+Bytes\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_adbde99135916bba37155b5558ae84552}\label{class_wave_file_buffer_reader_adbde99135916bba37155b5558ae84552}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!WAV\_HEADER@{WAV\_HEADER}}
+\index{WAV\_HEADER@{WAV\_HEADER}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{WAV\_HEADER}{WAV\_HEADER}}
+{\footnotesize\ttfamily const uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::\+WAV\+\_\+\+HEADER = 46}
+
+\mbox{\Hypertarget{class_wave_file_buffer_reader_a3c0b8c6c87c7a49bc0518fdd0b0c879b}\label{class_wave_file_buffer_reader_a3c0b8c6c87c7a49bc0518fdd0b0c879b}} 
+\index{WaveFileBufferReader@{WaveFileBufferReader}!WAV\_HEADER\_TO\_CHUNKLEN@{WAV\_HEADER\_TO\_CHUNKLEN}}
+\index{WAV\_HEADER\_TO\_CHUNKLEN@{WAV\_HEADER\_TO\_CHUNKLEN}!WaveFileBufferReader@{WaveFileBufferReader}}
+\doxysubsubsection{\texorpdfstring{WAV\_HEADER\_TO\_CHUNKLEN}{WAV\_HEADER\_TO\_CHUNKLEN}}
+{\footnotesize\ttfamily const uint8\+\_\+t Wave\+File\+Buffer\+Reader\+::\+WAV\+\_\+\+HEADER\+\_\+\+TO\+\_\+\+CHUNKLEN = 20}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_wave_file_buffer_reader_8h}{Wave\+File\+Buffer\+Reader.\+h}}\item 
+src/\mbox{\hyperlink{_wave_file_buffer_reader_8cpp}{Wave\+File\+Buffer\+Reader.\+cpp}}\end{DoxyCompactItemize}

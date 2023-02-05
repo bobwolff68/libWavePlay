@@ -1,0 +1,325 @@
+\hypertarget{class_audio_file_player}{}\doxysection{Audio\+File\+Player Class Reference}
+\label{class_audio_file_player}\index{AudioFilePlayer@{AudioFilePlayer}}
+
+
+Support for playing and pausing a single file.  
+
+
+
+
+{\ttfamily \#include $<$Audio\+File\+Player.\+h$>$}
+
+Inheritance diagram for Audio\+File\+Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_audio_file_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_audio_file_player_aef3d12be87981e0f090deb39bc083b61}{Audio\+File\+Player}} (uint8\+\_\+t esp32\+Timer, uint8\+\_\+t esp32\+Pin)
+\begin{DoxyCompactList}\small\item\em Instantiates and sets up the hardware. Kicks off a thread for native playout as well. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_audio_file_player_a7a4c7bfa95e231deab8ed7634f550be8}{$\sim$\+Audio\+File\+Player}} ()
+\item 
+bool \mbox{\hyperlink{class_audio_file_player_a90705f16e35b21b41e1b9ebe8b955f9c}{Load\+File}} (const char $\ast$fname)
+\begin{DoxyCompactList}\small\item\em This method causes the file header to be parsed and processed to be ready for playout. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_file_player_aa7fae0a0b46f7c91937a9f037d7e936f}{Play\+File}} ()
+\begin{DoxyCompactList}\small\item\em Kick off the playout of the file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_file_player_a2b6a61f5fbde6702feb54612039f8ee6}{Pause\+File}} ()
+\begin{DoxyCompactList}\small\item\em Pause playback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_file_player_abe1d3bc725cc013cac87a023ff4433c0}{Set\+Volume}} (uint8\+\_\+t \+\_\+vol)
+\begin{DoxyCompactList}\small\item\em Attenuation of the signal in software. This does not control hardware. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_audio_file_player_aa157d566ce44ed80c4bbe7fdceb0f805}{is\+Done\+Playing}} ()
+\begin{DoxyCompactList}\small\item\em Status of when the file is done being played fully. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_file_player_ab4bec87812da081a971dbdc2ffa6d0ca}{Run}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_robo_task}{Robo\+Task}}\textquotesingle{}s thread-\/based worker for native mode. In ESP32 mode, the ISR handles DAC writing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_file_player_a784d77663c918db8e2a27d3a332acb94}{print\+Data\+Table}} ()
+\begin{DoxyCompactList}\small\item\em Utility for inspecting what values will be used given a volume set via \mbox{\hyperlink{class_audio_file_player_abe1d3bc725cc013cac87a023ff4433c0}{Set\+Volume()}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void IRAM\+\_\+\+ATTR \mbox{\hyperlink{class_audio_file_player_a8a312826619a56757d19196d8c004f1d}{timer\+ISRCallback}} ()
+\begin{DoxyCompactList}\small\item\em Interrupt service routine for ESP32 to control precise writing of DAC values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Wave\+File\+Type $\ast$ \mbox{\hyperlink{class_audio_file_player_ae1fbdee2b20f23494c8cd5c51880a5c6}{p\+Wave}} = nullptr
+\begin{DoxyCompactList}\small\item\em Base class instance for the loaded wave file to be processed/played. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{class_audio_file_player_a276302fd9d6beee55f40c42a5a6d7e69}{pin\+DAC}} = 0
+\begin{DoxyCompactList}\small\item\em Holding place for the pin used as the DAC output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_audio_file_player_a882e70cb1be607881e815d6974134e10}{calc\+Data\+Table\+Based\+On\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em Worker for calculating {\ttfamily p\+Data\+Table\mbox{[}\mbox{]}} values once the volume is changed in Set\+Volume. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_file_player_a1a52ce0922916bb55b1d57af3535112a}{kill\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Manage the hardware resource. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_audio_file_player_a4bbb2b4c62f6e5ed00d21b4b3764ffc9}{pause\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Manage the hardware resource. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_audio_file_player_aa6ca81bc127489899a0ea42ff2126db6}{task\+Sleep\+Time\+Target}}
+\begin{DoxyCompactList}\small\item\em Used in native mode to simulate processing at semi-\/realtime of the data (slowing things down) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_audio_file_player_ac7acade6317d57f2aee2f4b369773369}{timer\+Number}}
+\begin{DoxyCompactList}\small\item\em Holding place for the timer number to be used in the ESP32 device. \end{DoxyCompactList}\item 
+hw\+\_\+timer\+\_\+t $\ast$ \mbox{\hyperlink{class_audio_file_player_ab006ad05296455425e7a7c5638d42c84}{HWTimer}}
+\begin{DoxyCompactList}\small\item\em Timer resource from ESP32. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{class_audio_file_player_a00bda6824532ec3ee33119cd70e933ee}{p\+Data\+Table}} \mbox{[}256\mbox{]}
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{class_audio_file_player_a28036a3b6eb48df2d0a85e174d1fab3d}{cur\+Volume}} = 100
+\begin{DoxyCompactList}\small\item\em Holder for the current volume value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Support for playing and pausing a single file. 
+
+ESP32-\/centric class for playout and managment of playout for a single audio file. Timer and DAC pin are required inputs for ESP32 usage. When running in native compile mode, class will \textquotesingle{}go through the motions\textquotesingle{} but will not actually play. Based on \mbox{\hyperlink{class_robo_task}{Robo\+Task}} for its independent threaded runtime. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_audio_file_player_aef3d12be87981e0f090deb39bc083b61}\label{class_audio_file_player_aef3d12be87981e0f090deb39bc083b61}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!AudioFilePlayer@{AudioFilePlayer}}
+\index{AudioFilePlayer@{AudioFilePlayer}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{AudioFilePlayer()}{AudioFilePlayer()}}
+{\footnotesize\ttfamily Audio\+File\+Player\+::\+Audio\+File\+Player (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{esp32\+Timer,  }\item[{uint8\+\_\+t}]{esp32\+Pin }\end{DoxyParamCaption})}
+
+
+
+Instantiates and sets up the hardware. Kicks off a thread for native playout as well. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em esp32\+Timer} & -\/ there are 4 timers in the ESP32 \mbox{[}0-\/3\mbox{]} \\
+\hline
+{\em esp32\+Pin} & -\/ there are two DAC pins on the ESP32 -\/ 25 and 26 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_audio_file_player_a7a4c7bfa95e231deab8ed7634f550be8}\label{class_audio_file_player_a7a4c7bfa95e231deab8ed7634f550be8}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!````~AudioFilePlayer@{$\sim$AudioFilePlayer}}
+\index{````~AudioFilePlayer@{$\sim$AudioFilePlayer}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{$\sim$AudioFilePlayer()}{~AudioFilePlayer()}}
+{\footnotesize\ttfamily Audio\+File\+Player\+::$\sim$\+Audio\+File\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_audio_file_player_a882e70cb1be607881e815d6974134e10}\label{class_audio_file_player_a882e70cb1be607881e815d6974134e10}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!calcDataTableBasedOnVolume@{calcDataTableBasedOnVolume}}
+\index{calcDataTableBasedOnVolume@{calcDataTableBasedOnVolume}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{calcDataTableBasedOnVolume()}{calcDataTableBasedOnVolume()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::calc\+Data\+Table\+Based\+On\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Worker for calculating {\ttfamily p\+Data\+Table\mbox{[}\mbox{]}} values once the volume is changed in Set\+Volume. 
+
+\mbox{\Hypertarget{class_audio_file_player_aa157d566ce44ed80c4bbe7fdceb0f805}\label{class_audio_file_player_aa157d566ce44ed80c4bbe7fdceb0f805}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!isDonePlaying@{isDonePlaying}}
+\index{isDonePlaying@{isDonePlaying}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{isDonePlaying()}{isDonePlaying()}}
+{\footnotesize\ttfamily bool Audio\+File\+Player\+::is\+Done\+Playing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Status of when the file is done being played fully. 
+
+\mbox{\Hypertarget{class_audio_file_player_a1a52ce0922916bb55b1d57af3535112a}\label{class_audio_file_player_a1a52ce0922916bb55b1d57af3535112a}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!killTimer@{killTimer}}
+\index{killTimer@{killTimer}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{killTimer()}{killTimer()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::kill\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Manage the hardware resource. 
+
+\mbox{\Hypertarget{class_audio_file_player_a90705f16e35b21b41e1b9ebe8b955f9c}\label{class_audio_file_player_a90705f16e35b21b41e1b9ebe8b955f9c}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!LoadFile@{LoadFile}}
+\index{LoadFile@{LoadFile}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{LoadFile()}{LoadFile()}}
+{\footnotesize\ttfamily bool Audio\+File\+Player\+::\+Load\+File (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})}
+
+
+
+This method causes the file header to be parsed and processed to be ready for playout. 
+
+\begin{DoxyReturn}{Returns}
+true on success or false if file could not be loaded/found/parsed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_audio_file_player_a2b6a61f5fbde6702feb54612039f8ee6}\label{class_audio_file_player_a2b6a61f5fbde6702feb54612039f8ee6}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!PauseFile@{PauseFile}}
+\index{PauseFile@{PauseFile}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{PauseFile()}{PauseFile()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::\+Pause\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Pause playback. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]this needs further testing \end{DoxyRefDesc}
+\mbox{\Hypertarget{class_audio_file_player_a4bbb2b4c62f6e5ed00d21b4b3764ffc9}\label{class_audio_file_player_a4bbb2b4c62f6e5ed00d21b4b3764ffc9}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!pauseTimer@{pauseTimer}}
+\index{pauseTimer@{pauseTimer}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{pauseTimer()}{pauseTimer()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::pause\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Manage the hardware resource. 
+
+\mbox{\Hypertarget{class_audio_file_player_aa7fae0a0b46f7c91937a9f037d7e936f}\label{class_audio_file_player_aa7fae0a0b46f7c91937a9f037d7e936f}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!PlayFile@{PlayFile}}
+\index{PlayFile@{PlayFile}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{PlayFile()}{PlayFile()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::\+Play\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Kick off the playout of the file. 
+
+\mbox{\Hypertarget{class_audio_file_player_a784d77663c918db8e2a27d3a332acb94}\label{class_audio_file_player_a784d77663c918db8e2a27d3a332acb94}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!printDataTable@{printDataTable}}
+\index{printDataTable@{printDataTable}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{printDataTable()}{printDataTable()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::print\+Data\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Utility for inspecting what values will be used given a volume set via \mbox{\hyperlink{class_audio_file_player_abe1d3bc725cc013cac87a023ff4433c0}{Set\+Volume()}} 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_audio_file_player_abe1d3bc725cc013cac87a023ff4433c0}{Set\+Volume}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_audio_file_player_ab4bec87812da081a971dbdc2ffa6d0ca}\label{class_audio_file_player_ab4bec87812da081a971dbdc2ffa6d0ca}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!Run@{Run}}
+\index{Run@{Run}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_robo_task}{Robo\+Task}}\textquotesingle{}s thread-\/based worker for native mode. In ESP32 mode, the ISR handles DAC writing. 
+
+
+
+Implements \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Robo\+Task}}.
+
+\mbox{\Hypertarget{class_audio_file_player_abe1d3bc725cc013cac87a023ff4433c0}\label{class_audio_file_player_abe1d3bc725cc013cac87a023ff4433c0}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!SetVolume@{SetVolume}}
+\index{SetVolume@{SetVolume}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{SetVolume()}{SetVolume()}}
+{\footnotesize\ttfamily void Audio\+File\+Player\+::\+Set\+Volume (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{\+\_\+vol }\end{DoxyParamCaption})}
+
+
+
+Attenuation of the signal in software. This does not control hardware. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+vol} & is a range of 0-\/100 where 100 is a fully unmodified playout. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_audio_file_player_a8a312826619a56757d19196d8c004f1d}\label{class_audio_file_player_a8a312826619a56757d19196d8c004f1d}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!timerISRCallback@{timerISRCallback}}
+\index{timerISRCallback@{timerISRCallback}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{timerISRCallback()}{timerISRCallback()}}
+{\footnotesize\ttfamily void IRAM\+\_\+\+ATTR Audio\+File\+Player\+::timer\+ISRCallback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Interrupt service routine for ESP32 to control precise writing of DAC values. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_audio_file_player_a28036a3b6eb48df2d0a85e174d1fab3d}\label{class_audio_file_player_a28036a3b6eb48df2d0a85e174d1fab3d}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!curVolume@{curVolume}}
+\index{curVolume@{curVolume}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{curVolume}{curVolume}}
+{\footnotesize\ttfamily uint8\+\_\+t Audio\+File\+Player\+::cur\+Volume = 100\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Holder for the current volume value. 
+
+\mbox{\Hypertarget{class_audio_file_player_ab006ad05296455425e7a7c5638d42c84}\label{class_audio_file_player_ab006ad05296455425e7a7c5638d42c84}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!HWTimer@{HWTimer}}
+\index{HWTimer@{HWTimer}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{HWTimer}{HWTimer}}
+{\footnotesize\ttfamily hw\+\_\+timer\+\_\+t$\ast$ Audio\+File\+Player\+::\+HWTimer\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Timer resource from ESP32. 
+
+\mbox{\Hypertarget{class_audio_file_player_a00bda6824532ec3ee33119cd70e933ee}\label{class_audio_file_player_a00bda6824532ec3ee33119cd70e933ee}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!pDataTable@{pDataTable}}
+\index{pDataTable@{pDataTable}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{pDataTable}{pDataTable}}
+{\footnotesize\ttfamily uint8\+\_\+t Audio\+File\+Player\+::p\+Data\+Table\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ }
+\DoxyCodeLine{\ \ \ \ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 0,\ 1,\ 2,\ 3,\ 4,\ 5\}}
+
+\end{DoxyCode}
+Volume translation table at a given volume. Since volume isn\textquotesingle{}t changed often, we pre-\/calculate all 256 8-\/bit output values after the volume is changed. This is more efficient than making the calculation on every value to be output. \mbox{\Hypertarget{class_audio_file_player_a276302fd9d6beee55f40c42a5a6d7e69}\label{class_audio_file_player_a276302fd9d6beee55f40c42a5a6d7e69}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!pinDAC@{pinDAC}}
+\index{pinDAC@{pinDAC}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{pinDAC}{pinDAC}}
+{\footnotesize\ttfamily uint8\+\_\+t Audio\+File\+Player\+::pin\+DAC = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Holding place for the pin used as the DAC output. 
+
+\mbox{\Hypertarget{class_audio_file_player_ae1fbdee2b20f23494c8cd5c51880a5c6}\label{class_audio_file_player_ae1fbdee2b20f23494c8cd5c51880a5c6}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!pWave@{pWave}}
+\index{pWave@{pWave}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{pWave}{pWave}}
+{\footnotesize\ttfamily Wave\+File\+Type $\ast$ Audio\+File\+Player\+::p\+Wave = nullptr\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Base class instance for the loaded wave file to be processed/played. 
+
+\mbox{\Hypertarget{class_audio_file_player_aa6ca81bc127489899a0ea42ff2126db6}\label{class_audio_file_player_aa6ca81bc127489899a0ea42ff2126db6}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!taskSleepTimeTarget@{taskSleepTimeTarget}}
+\index{taskSleepTimeTarget@{taskSleepTimeTarget}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{taskSleepTimeTarget}{taskSleepTimeTarget}}
+{\footnotesize\ttfamily uint32\+\_\+t Audio\+File\+Player\+::task\+Sleep\+Time\+Target\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Used in native mode to simulate processing at semi-\/realtime of the data (slowing things down) 
+
+\mbox{\Hypertarget{class_audio_file_player_ac7acade6317d57f2aee2f4b369773369}\label{class_audio_file_player_ac7acade6317d57f2aee2f4b369773369}} 
+\index{AudioFilePlayer@{AudioFilePlayer}!timerNumber@{timerNumber}}
+\index{timerNumber@{timerNumber}!AudioFilePlayer@{AudioFilePlayer}}
+\doxysubsubsection{\texorpdfstring{timerNumber}{timerNumber}}
+{\footnotesize\ttfamily uint8\+\_\+t Audio\+File\+Player\+::timer\+Number\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Holding place for the timer number to be used in the ESP32 device. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_audio_file_player_8h}{Audio\+File\+Player.\+h}}\item 
+src/\mbox{\hyperlink{_audio_file_player_8cpp}{Audio\+File\+Player.\+cpp}}\end{DoxyCompactItemize}

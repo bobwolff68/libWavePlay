@@ -1,0 +1,78 @@
+\hypertarget{_audio_file_player_8h_source}{}\doxysection{Audio\+File\+Player.\+h}
+\label{_audio_file_player_8h_source}\index{src/AudioFilePlayer.h@{src/AudioFilePlayer.h}}
+\mbox{\hyperlink{_audio_file_player_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2022\ Robert\ M.\ Wolff\ (bob\ dot\ wolff\ 68\ at\ gmail\ dot\ com)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ modification,\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 1.\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ 2.\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation\ and/or\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ 3.\ Neither\ the\ name\ of\ the\ copyright\ holder\ nor\ the\ names\ of\ its\ contributors\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ may\ be\ used\ to\ endorse\ or\ promote\ products\ derived\ from\ this\ software\ without\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ HOLDER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ }}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_wave_file_little_f_s_reader_8h}{WaveFileLittleFSReader.h}}"{}}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_wave_file_s_p_i_f_f_s_reader_8h}{WaveFileSPIFFSReader.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_wave_file_stdio_reader_8h}{WaveFileStdioReader.h}}"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{utils.h}}"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{robotask_8h}{robotask.h}}"{}}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_audio_file_player}{AudioFilePlayer}}\ :\ \mbox{\hyperlink{class_robo_task}{RoboTask}}}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_audio_file_player}{AudioFilePlayer}}(uint8\_t\ esp32Timer,\ uint8\_t\ esp32Pin);}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_audio_file_player_a7a4c7bfa95e231deab8ed7634f550be8}{\string~AudioFilePlayer}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_audio_file_player_a90705f16e35b21b41e1b9ebe8b955f9c}{LoadFile}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_aa7fae0a0b46f7c91937a9f037d7e936f}{PlayFile}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_a2b6a61f5fbde6702feb54612039f8ee6}{PauseFile}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_abe1d3bc725cc013cac87a023ff4433c0}{SetVolume}}(uint8\_t\ \_vol);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_audio_file_player_aa157d566ce44ed80c4bbe7fdceb0f805}{isDonePlaying}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_ab4bec87812da081a971dbdc2ffa6d0ca}{Run}}();}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_a784d77663c918db8e2a27d3a332acb94}{printDataTable}}();}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ IRAM\_ATTR\ \mbox{\hyperlink{class_audio_file_player_a8a312826619a56757d19196d8c004f1d}{timerISRCallback}}();}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{static}\ WaveFileType*\ \mbox{\hyperlink{class_audio_file_player_ae1fbdee2b20f23494c8cd5c51880a5c6}{pWave}};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{class_audio_file_player_a276302fd9d6beee55f40c42a5a6d7e69}{pinDAC}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00088\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_audio_file_player_aa6ca81bc127489899a0ea42ff2126db6}{taskSleepTimeTarget}};}
+\DoxyCodeLine{00090\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_audio_file_player_ac7acade6317d57f2aee2f4b369773369}{timerNumber}};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{class_audio_file_player_a00bda6824532ec3ee33119cd70e933ee}{pDataTable}}[256];}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{static}\ uint8\_t\ \mbox{\hyperlink{class_audio_file_player_a28036a3b6eb48df2d0a85e174d1fab3d}{curVolume}};}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_a882e70cb1be607881e815d6974134e10}{calcDataTableBasedOnVolume}}();}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_a1a52ce0922916bb55b1d57af3535112a}{killTimer}}();}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_file_player_a4bbb2b4c62f6e5ed00d21b4b3764ffc9}{pauseTimer}}();}
+\DoxyCodeLine{00105\ \ \ \ \ hw\_timer\_t\ *\mbox{\hyperlink{class_audio_file_player_ab006ad05296455425e7a7c5638d42c84}{HWTimer}};}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00107\ \};}
+
+\end{DoxyCode}

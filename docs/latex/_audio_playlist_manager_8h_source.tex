@@ -1,0 +1,85 @@
+\hypertarget{_audio_playlist_manager_8h_source}{}\doxysection{Audio\+Playlist\+Manager.\+h}
+\label{_audio_playlist_manager_8h_source}\index{src/AudioPlaylistManager.h@{src/AudioPlaylistManager.h}}
+\mbox{\hyperlink{_audio_playlist_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2022\ Robert\ M.\ Wolff\ (bob\ dot\ wolff\ 68\ at\ gmail\ dot\ com)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ modification,\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 1.\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ 2.\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation\ and/or\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ 3.\ Neither\ the\ name\ of\ the\ copyright\ holder\ nor\ the\ names\ of\ its\ contributors\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ may\ be\ used\ to\ endorse\ or\ promote\ products\ derived\ from\ this\ software\ without\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ HOLDER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ }}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <dirent.h>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{utils.h}}"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_audio_file_player_8h}{AudioFilePlayer.h}}"{}}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{robotask_8h}{robotask.h}}"{}}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_audio_playlist_manager}{AudioPlaylistManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_robo_task}{RoboTask}}}
+\DoxyCodeLine{00063\ \{}
+\DoxyCodeLine{00064\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_audio_playlist_manager}{AudioPlaylistManager}}(uint8\_t\ esp32Timer,\ uint8\_t\ esp32Pin,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_initLoc,\ uint8\_t\ \_ampControlPin=0,\ \textcolor{keywordtype}{bool}\ \_onPinHigh=\textcolor{keyword}{true});}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a785bf7515b5aad3e6c61d03a488a3c67}{Run}}();}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_ab1f9d20ddeba890238960a8a3055dcbe}{PlayRandomEntry}}();}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_afb37c268ad1e583a2dcfbeb648e71f0f}{SetIntroSoundIndex}}(uint16\_t\ entryNum);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a4106bd2d44f44b4af681678d98e1380f}{SetIntroSoundName}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname);}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_added299841e59e566d1544135505eb9c}{PlayEntryIndex}}(uint16\_t\ entryNum);}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a5d53845fa497f544ea7408b8f25bc027}{PlayEntryName}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname);}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a7df2f03c194129861476c8d3ebd96a5f}{Play}}();}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_af739dfecae89af5842a317a97123ac88}{Pause}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a4236ca64ffd9f94d0a48bd8396c6e897}{SetVolume}}(uint8\_t\ \_vol);}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_aa33f498ccc46394f62eb548c1fecfe8a}{printDataTable}}()\ \{\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_audio_playlist_manager_ad9865e853908f957394af92cae6ded4a}{pAFP}})\ \mbox{\hyperlink{class_audio_playlist_manager_ad9865e853908f957394af92cae6ded4a}{pAFP}}-\/>printDataTable();\ \};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a734225f48ff565b5eac3157580b25294}{ClearFileList}}();}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_aa048ddf99c20bcffbbb70e8132b71620}{AddFilesFrom}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_dirname);}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a3fc24d2e248d39393effc28f4851e879}{GetFileList}}(std::vector<std::string>\&\ fList);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}}\ \{\ \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ae04a2c6d43e63690308ce4e4df042713}{Idle}},\ \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709ad24a1e1dfac48e34afe676369d0bbbea}{PlayingIntro}},\ \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a60b2efbc788f45a2e427c39a6fc8105d}{PlayingSound}},\ \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709a4ddca80fcf27e02c5939d0aa4a96da3b}{Paused}}\ \};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00106\ \ \ \ \ \mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}}\ \mbox{\hyperlink{class_audio_playlist_manager_aa9bcd1ca4e71ccf2a21c90092e1c52b7}{curState}};}
+\DoxyCodeLine{00107\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_audio_playlist_manager_a5e47e5d001afdd1a53dfcba55e1e8b88}{ampPowerPin}};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_audio_playlist_manager_a71b400b480d951e49edb94a661e0bc8c}{ampPowerPinHigh}};}
+\DoxyCodeLine{00110\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_audio_playlist_manager_a054f576369ce00ad73375e3d6ad83440}{filenames}};}
+\DoxyCodeLine{00112\ \ \ \ \ std::unique\_ptr<AudioFilePlayer>\ \mbox{\hyperlink{class_audio_playlist_manager_ad9865e853908f957394af92cae6ded4a}{pAFP}};}
+\DoxyCodeLine{00113\ \ \ \ \ int16\_t\ \mbox{\hyperlink{class_audio_playlist_manager_a8bae8cada278f30ca71c7fe5e035916d}{entryNumberForIntro}};}
+\DoxyCodeLine{00114\ \ \ \ \ int16\_t\ \mbox{\hyperlink{class_audio_playlist_manager_af313e2007cdcec9872afd6b1d5546e24}{entryNumberToPlay}};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_ab52406b76607da647e312b99eaa03583}{SetAmpPower}}(\textcolor{keywordtype}{bool}\ \_on);}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_audio_playlist_manager_a3b342cdf36f1f1b1fc91a5876df1ba03}{GetFiles}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ dirLocation,\ std::vector<std::string>\&\ fileList);}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_playlist_manager_a424b7b13f64892063ec6d261e5ab2d2c}{NextState}}(\mbox{\hyperlink{class_audio_playlist_manager_a2434f4e17655e3c68a228ff1849fa709}{State}}\ nextState);}
+\DoxyCodeLine{00122\ \};}
+
+\end{DoxyCode}

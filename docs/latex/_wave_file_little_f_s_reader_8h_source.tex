@@ -1,0 +1,55 @@
+\hypertarget{_wave_file_little_f_s_reader_8h_source}{}\doxysection{Wave\+File\+Little\+FSReader.\+h}
+\label{_wave_file_little_f_s_reader_8h_source}\index{src/WaveFileLittleFSReader.h@{src/WaveFileLittleFSReader.h}}
+\mbox{\hyperlink{_wave_file_little_f_s_reader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2022\ Robert\ M.\ Wolff\ (bob\ dot\ wolff\ 68\ at\ gmail\ dot\ com)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ modification,\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 1.\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ 2.\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation\ and/or\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ 3.\ Neither\ the\ name\ of\ the\ copyright\ holder\ nor\ the\ names\ of\ its\ contributors\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ may\ be\ used\ to\ endorse\ or\ promote\ products\ derived\ from\ this\ software\ without\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ HOLDER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ }}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}LittleFS.h"{}}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_wave_file_buffer_reader_8h}{WaveFileBufferReader.h}}"{}}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_wave_file_little_f_s_reader}{WaveFileLittleFSReader}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_wave_file_buffer_reader}{WaveFileBufferReader}}}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_wave_file_little_f_s_reader}{WaveFileLittleFSReader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname);}
+\DoxyCodeLine{00047\ \ \ \ \ \mbox{\hyperlink{class_wave_file_little_f_s_reader_af8a195fc038b5e55bf8a7f3b2a1b4f9a}{\string~WaveFileLittleFSReader}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_little_f_s_reader_a4d20d097ecc1919b4dff117ddb8fe66d}{open}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_little_f_s_reader_a2831da01ae5abc184249dca51355ee8a}{read}}(uint8\_t*\ pDest,\ \textcolor{keywordtype}{size\_t}\ numBytes);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_little_f_s_reader_ab03fd5b1154ed53b10192fdeb2281fa6}{seekRel}}(\textcolor{keywordtype}{long}\ offset);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_little_f_s_reader_a83ed75228c951e470b4c611dd3ce2a3c}{close}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00060\ \ \ \ \ fs::File\ \mbox{\hyperlink{class_wave_file_little_f_s_reader_abcd3f256a28c1676ed7194d120646b3f}{f}};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_little_f_s_reader_aa33362f0b13f31c103cd060094bca514}{bIsOpen}};}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,56 @@
+\hypertarget{_wave_file_s_p_i_f_f_s_reader_8h_source}{}\doxysection{Wave\+File\+SPIFFSReader.\+h}
+\label{_wave_file_s_p_i_f_f_s_reader_8h_source}\index{src/WaveFileSPIFFSReader.h@{src/WaveFileSPIFFSReader.h}}
+\mbox{\hyperlink{_wave_file_s_p_i_f_f_s_reader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2022\ Robert\ M.\ Wolff\ (bob\ dot\ wolff\ 68\ at\ gmail\ dot\ com)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ modification,\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 1.\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ 2.\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation\ and/or\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ 3.\ Neither\ the\ name\ of\ the\ copyright\ holder\ nor\ the\ names\ of\ its\ contributors\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ may\ be\ used\ to\ endorse\ or\ promote\ products\ derived\ from\ this\ software\ without\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ HOLDER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ }}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ "{}SPIFFS.h"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{utils_8h}{utils.h}}"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_wave_file_buffer_reader_8h}{WaveFileBufferReader.h}}"{}}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader}{WaveFileSPIFFSReader}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_wave_file_buffer_reader}{WaveFileBufferReader}}}
+\DoxyCodeLine{00046\ \{}
+\DoxyCodeLine{00047\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader}{WaveFileSPIFFSReader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname);}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a7ce6f30d855c2d09e58ea535c04971ad}{\string~WaveFileSPIFFSReader}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a36afe61dd72ca4be50467e7190bc93d0}{open}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a1dd9755ba1ed962c2f52f2fffdb9b496}{read}}(uint8\_t*\ pDest,\ \textcolor{keywordtype}{size\_t}\ numBytes);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_ac952f1c35ede4e90270bc78bd144215c}{seekRel}}(\textcolor{keywordtype}{long}\ offset);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a569bb0821331be6989df4408847295ac}{close}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00063\ \ \ \ \ fs::File\ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a13ed85837f2745a2fad8a754afd9ea42}{f}};}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_s_p_i_f_f_s_reader_a7e513cd4f9c573094b8d075639f31d2f}{bIsOpen}};}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

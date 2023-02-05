@@ -1,0 +1,103 @@
+\hypertarget{_wave_file_buffer_reader_8h_source}{}\doxysection{Wave\+File\+Buffer\+Reader.\+h}
+\label{_wave_file_buffer_reader_8h_source}\index{src/WaveFileBufferReader.h@{src/WaveFileBufferReader.h}}
+\mbox{\hyperlink{_wave_file_buffer_reader_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2022\ Robert\ M.\ Wolff\ (bob\ dot\ wolff\ 68\ at\ gmail\ dot\ com)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ modification,\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 1.\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ 2.\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation\ and/or\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ 3.\ Neither\ the\ name\ of\ the\ copyright\ holder\ nor\ the\ names\ of\ its\ contributors\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ may\ be\ used\ to\ endorse\ or\ promote\ products\ derived\ from\ this\ software\ without\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ HOLDER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ }}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#ifndef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_file_exception_8h}{FileException.h}}"{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{robotask_8h}{robotask.h}}"{}}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_wave_file_buffer_reader}{WaveFileBufferReader}}\ :\ \mbox{\hyperlink{class_robo_task}{RoboTask}}}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_wave_file_buffer_reader}{WaveFileBufferReader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname,\ uint16\_t\ rampTiming=500);}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{class_wave_file_buffer_reader_a4fe4eda192e2700dfcfd2a83b226df86}{\string~WaveFileBufferReader}}();}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_aaa6363190fa2645a978f78b253057d23}{Run}}();}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_afa5ba61fe37b80e7174bd99c698c3432}{printFileInfo}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a5691fea3a1c5f02d01acaaec40852952}{isPlaybackComplete}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a7d08d4ab4e1bfb9167f03bfd14b665a5}{isFileReadComplete}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_wave_file_buffer_reader_ac2aa862a1703a9d02fc4edb260981ed1}{bIsDoneReadingFile}};\ \};}
+\DoxyCodeLine{00069\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a17da48a335be84c6d4b8f7f9f56aa1de}{getBufferFullPercentage}}();}
+\DoxyCodeLine{00071\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a59948ce9ccd0e75a343f0c82ab606004}{getFileReadPercentage}}();}
+\DoxyCodeLine{00073\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a2b397923269677eabc74e4339e553fb4}{getSampleRate}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a34110997615565b70983b2045d2a3081}{sampleRate}};\ \};}
+\DoxyCodeLine{00075\ \ \ \ \ uint8\_t\ \ \mbox{\hyperlink{class_wave_file_buffer_reader_a6707cba1819b9d073866e1eee48cdfc0}{getLastByteOfFile}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a388b74fd82e90932c3be34a1929fd052}{lastByteValueOfFile}};\ \};}
+\DoxyCodeLine{00077\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{class_wave_file_buffer_reader_a23fba242b95ec3eb4b1a9eadf2ec85ca}{getReadPointer}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_aac6d0c066044e414ed0d7157fa3767e8}{advanceReadPointer}}();}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_adbde99135916bba37155b5558ae84552}{WAV\_HEADER}}\ =\ 46;\ \ \textcolor{comment}{//\ Maximum\ header\ size}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a3c0b8c6c87c7a49bc0518fdd0b0c879b}{WAV\_HEADER\_TO\_CHUNKLEN}}\ =\ 20;\ \ \textcolor{comment}{//\ Just\ enough\ to\ know\ how\ much\ left\ to\ read.}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{const}\ uint16\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_afd80ed2b6962b38e443ea3fffe6b7b75}{rampTime}};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a576774f21df4a4f9cc26bb6db3add7fe}{open}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fname)\ =\ 0;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_ab298d8cf908a324ea811cab1d357dec4}{read}}(uint8\_t*\ pDest,\ \textcolor{keywordtype}{size\_t}\ numBytes)\ =\ 0;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a01385181e00d6d2a95bcfb20f0bbbd4a}{close}}(\textcolor{keywordtype}{void})\ =\ 0;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a488eac9fd1428870b84f019f410b6040}{seekRel}}(\textcolor{keywordtype}{long}\ offset)\ =\ 0;}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a021ede7ac7f212e31a769361bb643230}{readAndProcessWavHeader}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a03b154a1dea690b6dd3cc54f00005f5f}{readFirstByteAndPrepRampIn}}();}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_abc46d9ce99d708dfe25b0c5c2a87d525}{prepRampOut}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_acf9a34ca8975e5fe452540737bd99d3f}{bufferAlloc}}();}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a857a9875fb1dc259519434244e937637}{bufferFill}}();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ std::string\ \mbox{\hyperlink{class_wave_file_buffer_reader_a7055f1c6095b7872e707c11e17a4f073}{fileName}};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Buffer-\/specific\ items}}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_ad87172d333233dce44065eab7908b10c}{bIsRampOutComplete}};}
+\DoxyCodeLine{00103\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{class_wave_file_buffer_reader_a10b43a47fc795d6a385d695d72172f18}{pWavBuffer}};}
+\DoxyCodeLine{00104\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{class_wave_file_buffer_reader_a28c7ac4fddc3bc382d8d460d350c2351}{pBufferRead}};}
+\DoxyCodeLine{00105\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{class_wave_file_buffer_reader_ac510ed531845728a7fc022d6c9308524}{pBufferWrite}};}
+\DoxyCodeLine{00106\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a6fabdfc810d10ce448cc672d10454673}{lengthWavBuffer}};}
+\DoxyCodeLine{00107\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a388b74fd82e90932c3be34a1929fd052}{lastByteValueOfFile}};}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_aa99158aa52c30ad13da2d3454028158b}{bIsFirstFill}};}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_af847599df71d16b79ea3cd9b5608267c}{bIsBufferReady}};}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wave_file_buffer_reader_ac2aa862a1703a9d02fc4edb260981ed1}{bIsDoneReadingFile}};}
+\DoxyCodeLine{00111\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_aa0e75f153e660231ae0de51352dd0e53}{indexNotSureWhatYet}};}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{class_wave_file_buffer_reader_a404af348926a6ffec2c9aa8819241e5d}{pHeader}};}
+\DoxyCodeLine{00113\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_aa7f9fa75ebd61fa41d037da00cbdd8d4}{fillSleepTime}};}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\_SIZES\_COUNT}}\ =\ 6;}
+\DoxyCodeLine{00115\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a0e03028581858e00ae486b27a65fcbc4}{bufferByteRates}}[\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\_SIZES\_COUNT}}];}
+\DoxyCodeLine{00116\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_aa255f56524e6ac44598c7b685923b275}{bufferSizes}}\ \ \ \ [\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\_SIZES\_COUNT}}];}
+\DoxyCodeLine{00117\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_ab0ca47d087dc1923ce29af7046bab744}{totalWavBytesReadSoFar}};}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a8b46e0606bb9c5eb454a88a3d75f5fc4}{percentComplete}};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ Buffer\ stat\ items}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ Wave-\/specific\ items}}
+\DoxyCodeLine{00124\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_abad4da8ccb98ef3ca07f50f18f440063}{numChannels}};}
+\DoxyCodeLine{00125\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_wave_file_buffer_reader_a0945f5dba6c4f42f6eb9101ed7fe3c62}{bitsPerSample}};}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a34110997615565b70983b2045d2a3081}{sampleRate}};}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_wave_file_buffer_reader_af71fcedf0857501268288419165837af}{byteRate}};}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_wave_file_buffer_reader_a7a9ab3e904e02d80401b3ae84c3c5186}{totalWaveBytes}};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \};}
+
+\end{DoxyCode}

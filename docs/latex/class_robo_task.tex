@@ -1,0 +1,213 @@
+\hypertarget{class_robo_task}{}\doxysection{Robo\+Task Class Reference}
+\label{class_robo_task}\index{RoboTask@{RoboTask}}
+
+
+Abstract superclass of tasks (run on a separate thread). Call \mbox{\hyperlink{class_robo_task_a19fb241824ebed8d04e4b43c3ffa1f25}{Start()}} to begin the task and \mbox{\hyperlink{class_robo_task_a4b0430ec1fbcb21b7d57219b7f25d764}{Pause()}} to temporarily pause it. The inheriting class must implement \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Run()}} which will be called again and again when the task is in \textquotesingle{}Start/\+Running\textquotesingle{} mode.  
+
+
+
+
+{\ttfamily \#include $<$robotask.\+h$>$}
+
+Inheritance diagram for Robo\+Task\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.675159cm]{class_robo_task}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_robo_task_a9257d6ef2a4cb579480af50def163ac6}{Robo\+Task}} (const char $\ast$task\+Name=nullptr, uint8\+\_\+t priority=1, int stacksize=ROBOSTACKSIZE)
+\begin{DoxyCompactList}\small\item\em Constructor which takes an optional taskname. In the absence of a task name, a task name will be created based upon the current system-\/time. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_robo_task_a74158bd82cc7ecf92a82586fa29c23bc}{$\sim$\+Robo\+Task}} ()
+\item 
+void \mbox{\hyperlink{class_robo_task_a19fb241824ebed8d04e4b43c3ffa1f25}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Starts the task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_a4b0430ec1fbcb21b7d57219b7f25d764}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_a98aac65646ad3bdbdbf9767038a0f800}{Terminate}} ()
+\begin{DoxyCompactList}\small\item\em Terminate the task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_ae95d3411cab02ed537dc1281620fe7ff}{is\+Dead}} ()
+\begin{DoxyCompactList}\small\item\em Check to see if the task is still alive. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_ae08140a322d83ceed98e4d3d722e4f3f}{is\+Paused}} ()
+\begin{DoxyCompactList}\small\item\em Check to see if the task is Alive \& Running. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_a27396cd6dfd4b70699826668e51dc9d6}{has\+Elapsed}} (unsigned long elapsed)
+\begin{DoxyCompactList}\small\item\em Easy way to utilize the base class to set a lower \textquotesingle{}action time\textquotesingle{} frequency. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_a761f3700645f56d056b50ab3cc4e0e39}{reset\+Elapsed\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em Start the elapsed timer again with the current time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robo_task_ab28d49d25e8aa2cb119f7022871f8735}{set\+Base\+Run\+Delay}} (uint32\+\_\+t delay)
+\begin{DoxyCompactList}\small\item\em Change the default delay period in the task manager base class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Run}} ()=0
+\begin{DoxyCompactList}\small\item\em The inheriting class must implement this function. This is the function which gets run in the new task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_robo_task_a53bc2198fdd4309e783efc240a7a586e}{is\+This\+Thread\+Context}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_robo_task_a1419ef40fd73938f9cbdc5da3bc3fe4c}{get\+Stack\+High\+Water\+Mark}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_robo_task_a508d78f9e96cce859d439d26937a7496}{Robo\+Private\+Starter\+Task}} (void $\ast$task)
+\begin{DoxyCompactList}\small\item\em PRIVATE-\/ Do not call this function externally as it\textquotesingle{}s only passed to the constructor to initialize the object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract superclass of tasks (run on a separate thread). Call \mbox{\hyperlink{class_robo_task_a19fb241824ebed8d04e4b43c3ffa1f25}{Start()}} to begin the task and \mbox{\hyperlink{class_robo_task_a4b0430ec1fbcb21b7d57219b7f25d764}{Pause()}} to temporarily pause it. The inheriting class must implement \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Run()}} which will be called again and again when the task is in \textquotesingle{}Start/\+Running\textquotesingle{} mode. 
+
+\begin{DoxyAuthor}{Author}
+Robert Wolff -\/ based largely on Tom Bottglieri\textquotesingle{}s work from FRC Team 254 
+
+Tom Bottglieri 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_robo_task_a9257d6ef2a4cb579480af50def163ac6}\label{class_robo_task_a9257d6ef2a4cb579480af50def163ac6}} 
+\index{RoboTask@{RoboTask}!RoboTask@{RoboTask}}
+\index{RoboTask@{RoboTask}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{RoboTask()}{RoboTask()}}
+{\footnotesize\ttfamily Robo\+Task\+::\+Robo\+Task (\begin{DoxyParamCaption}\item[{const char $\ast$}]{task\+Name = {\ttfamily nullptr},  }\item[{uint8\+\_\+t}]{priority = {\ttfamily 1},  }\item[{int}]{stacksize = {\ttfamily ROBOSTACKSIZE} }\end{DoxyParamCaption})}
+
+
+
+Constructor which takes an optional taskname. In the absence of a task name, a task name will be created based upon the current system-\/time. 
+
+\mbox{\Hypertarget{class_robo_task_a74158bd82cc7ecf92a82586fa29c23bc}\label{class_robo_task_a74158bd82cc7ecf92a82586fa29c23bc}} 
+\index{RoboTask@{RoboTask}!````~RoboTask@{$\sim$RoboTask}}
+\index{````~RoboTask@{$\sim$RoboTask}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{$\sim$RoboTask()}{~RoboTask()}}
+{\footnotesize\ttfamily Robo\+Task\+::$\sim$\+Robo\+Task (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robo_task_a1419ef40fd73938f9cbdc5da3bc3fe4c}\label{class_robo_task_a1419ef40fd73938f9cbdc5da3bc3fe4c}} 
+\index{RoboTask@{RoboTask}!getStackHighWaterMark@{getStackHighWaterMark}}
+\index{getStackHighWaterMark@{getStackHighWaterMark}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{getStackHighWaterMark()}{getStackHighWaterMark()}}
+{\footnotesize\ttfamily uint16\+\_\+t Robo\+Task\+::get\+Stack\+High\+Water\+Mark (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_robo_task_a27396cd6dfd4b70699826668e51dc9d6}\label{class_robo_task_a27396cd6dfd4b70699826668e51dc9d6}} 
+\index{RoboTask@{RoboTask}!hasElapsed@{hasElapsed}}
+\index{hasElapsed@{hasElapsed}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{hasElapsed()}{hasElapsed()}}
+{\footnotesize\ttfamily bool Robo\+Task\+::has\+Elapsed (\begin{DoxyParamCaption}\item[{unsigned long}]{elapsed }\end{DoxyParamCaption})}
+
+
+
+Easy way to utilize the base class to set a lower \textquotesingle{}action time\textquotesingle{} frequency. 
+
+\mbox{\Hypertarget{class_robo_task_ae95d3411cab02ed537dc1281620fe7ff}\label{class_robo_task_ae95d3411cab02ed537dc1281620fe7ff}} 
+\index{RoboTask@{RoboTask}!isDead@{isDead}}
+\index{isDead@{isDead}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{isDead()}{isDead()}}
+{\footnotesize\ttfamily bool Robo\+Task\+::is\+Dead (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check to see if the task is still alive. 
+
+\mbox{\Hypertarget{class_robo_task_ae08140a322d83ceed98e4d3d722e4f3f}\label{class_robo_task_ae08140a322d83ceed98e4d3d722e4f3f}} 
+\index{RoboTask@{RoboTask}!isPaused@{isPaused}}
+\index{isPaused@{isPaused}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{isPaused()}{isPaused()}}
+{\footnotesize\ttfamily bool Robo\+Task\+::is\+Paused (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check to see if the task is Alive \& Running. 
+
+\mbox{\Hypertarget{class_robo_task_a53bc2198fdd4309e783efc240a7a586e}\label{class_robo_task_a53bc2198fdd4309e783efc240a7a586e}} 
+\index{RoboTask@{RoboTask}!isThisThreadContext@{isThisThreadContext}}
+\index{isThisThreadContext@{isThisThreadContext}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{isThisThreadContext()}{isThisThreadContext()}}
+{\footnotesize\ttfamily bool Robo\+Task\+::is\+This\+Thread\+Context (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_robo_task_a4b0430ec1fbcb21b7d57219b7f25d764}\label{class_robo_task_a4b0430ec1fbcb21b7d57219b7f25d764}} 
+\index{RoboTask@{RoboTask}!Pause@{Pause}}
+\index{Pause@{Pause}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily void Robo\+Task\+::\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Pauses the task. 
+
+\mbox{\Hypertarget{class_robo_task_a761f3700645f56d056b50ab3cc4e0e39}\label{class_robo_task_a761f3700645f56d056b50ab3cc4e0e39}} 
+\index{RoboTask@{RoboTask}!resetElapsedTimer@{resetElapsedTimer}}
+\index{resetElapsedTimer@{resetElapsedTimer}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{resetElapsedTimer()}{resetElapsedTimer()}}
+{\footnotesize\ttfamily void Robo\+Task\+::reset\+Elapsed\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Start the elapsed timer again with the current time. 
+
+\mbox{\Hypertarget{class_robo_task_a508d78f9e96cce859d439d26937a7496}\label{class_robo_task_a508d78f9e96cce859d439d26937a7496}} 
+\index{RoboTask@{RoboTask}!RoboPrivateStarterTask@{RoboPrivateStarterTask}}
+\index{RoboPrivateStarterTask@{RoboPrivateStarterTask}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{RoboPrivateStarterTask()}{RoboPrivateStarterTask()}}
+{\footnotesize\ttfamily void Robo\+Task\+::\+Robo\+Private\+Starter\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{task }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+PRIVATE-\/ Do not call this function externally as it\textquotesingle{}s only passed to the constructor to initialize the object. 
+
+This function sets up an operating-\/system task which will perpetually loop the \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Run()}} function. \begin{DoxyNote}{Note}
+When running, loops wait minimally between calls to \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Run()}}. During pause, loop waits longer or actually suspends the task depending on implementation. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em task} & is a Free\+RTOS task to run. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}\label{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}} 
+\index{RoboTask@{RoboTask}!Run@{Run}}
+\index{Run@{Run}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily virtual void Robo\+Task\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The inheriting class must implement this function. This is the function which gets run in the new task. 
+
+Subclasses should override this function to specify their own behavior. 
+
+Implemented in \mbox{\hyperlink{class_audio_file_player_ab4bec87812da081a971dbdc2ffa6d0ca}{Audio\+File\+Player}}, \mbox{\hyperlink{class_audio_playlist_manager_a785bf7515b5aad3e6c61d03a488a3c67}{Audio\+Playlist\+Manager}}, and \mbox{\hyperlink{class_wave_file_buffer_reader_aaa6363190fa2645a978f78b253057d23}{Wave\+File\+Buffer\+Reader}}.
+
+\mbox{\Hypertarget{class_robo_task_ab28d49d25e8aa2cb119f7022871f8735}\label{class_robo_task_ab28d49d25e8aa2cb119f7022871f8735}} 
+\index{RoboTask@{RoboTask}!setBaseRunDelay@{setBaseRunDelay}}
+\index{setBaseRunDelay@{setBaseRunDelay}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{setBaseRunDelay()}{setBaseRunDelay()}}
+{\footnotesize\ttfamily void Robo\+Task\+::set\+Base\+Run\+Delay (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{delay }\end{DoxyParamCaption})}
+
+
+
+Change the default delay period in the task manager base class. 
+
+\mbox{\Hypertarget{class_robo_task_a19fb241824ebed8d04e4b43c3ffa1f25}\label{class_robo_task_a19fb241824ebed8d04e4b43c3ffa1f25}} 
+\index{RoboTask@{RoboTask}!Start@{Start}}
+\index{Start@{Start}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Robo\+Task\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts the task. 
+
+\mbox{\Hypertarget{class_robo_task_a98aac65646ad3bdbdbf9767038a0f800}\label{class_robo_task_a98aac65646ad3bdbdbf9767038a0f800}} 
+\index{RoboTask@{RoboTask}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!RoboTask@{RoboTask}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily void Robo\+Task\+::\+Terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Terminate the task. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{robotask_8h}{robotask.\+h}}\item 
+src/\mbox{\hyperlink{robotask_8cpp}{robotask.\+cpp}}\end{DoxyCompactItemize}

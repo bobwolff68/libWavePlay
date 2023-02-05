@@ -1,0 +1,98 @@
+\hypertarget{robotask_8h_source}{}\doxysection{robotask.\+h}
+\label{robotask_8h_source}\index{src/robotask.h@{src/robotask.h}}
+\mbox{\hyperlink{robotask_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Copyright\ 2022\ Robert\ M.\ Wolff\ (bob\ dot\ wolff\ 68\ at\ gmail\ dot\ com)}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without\ modification,\ }}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ are\ permitted\ provided\ that\ the\ following\ conditions\ are\ met:}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ 1.\ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright\ notice,\ this\ }}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ 2.\ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright\ notice,\ }}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the\ documentation\ and/or\ }}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ 3.\ Neither\ the\ name\ of\ the\ copyright\ holder\ nor\ the\ names\ of\ its\ contributors\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ may\ be\ used\ to\ endorse\ or\ promote\ products\ derived\ from\ this\ software\ without\ }}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}\ AND\ }}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ THE\ IMPLIED\ }}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ ARE\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ HOLDER\ OR\ CONTRIBUTORS\ BE\ LIABLE\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ }}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ }}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ }}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ }}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ OF\ THIS\ SOFTWARE,\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#ifndef\ ROBOTASK\_H\_}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ ROBOTASK\_H\_}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#ifdef\ \_\_AVR\_\_}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ <Arduino\_FreeRTOS.h>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ ROBOSTACKSIZE\ 128}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ ESP32\ case}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ ROBOSTACKSIZE\ 2048}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_robo_task}{RoboTask}}\ \{}
+\DoxyCodeLine{00058\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{class_robo_task}{RoboTask}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ taskName\ =\ \textcolor{keyword}{nullptr},\ uint8\_t\ priority=1,\ \textcolor{keywordtype}{int}\ stacksize=ROBOSTACKSIZE);}
+\DoxyCodeLine{00064\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_robo_task_a74158bd82cc7ecf92a82586fa29c23bc}{\string~RoboTask}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_robo_task_a508d78f9e96cce859d439d26937a7496}{RoboPrivateStarterTask}}(\textcolor{keywordtype}{void}*\ task);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_robo_task_a19fb241824ebed8d04e4b43c3ffa1f25}{Start}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_robo_task_a4b0430ec1fbcb21b7d57219b7f25d764}{Pause}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_robo_task_a98aac65646ad3bdbdbf9767038a0f800}{Terminate}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_robo_task_ae95d3411cab02ed537dc1281620fe7ff}{isDead}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_robo_task_ae08140a322d83ceed98e4d3d722e4f3f}{isPaused}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_robo_task_a27396cd6dfd4b70699826668e51dc9d6}{hasElapsed}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ elapsed);}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_robo_task_a761f3700645f56d056b50ab3cc4e0e39}{resetElapsedTimer}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_robo_task_ab28d49d25e8aa2cb119f7022871f8735}{setBaseRunDelay}}(uint32\_t\ delay);}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00121\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_robo_task_ac3cffeb81e0bf4ecd03eb2a74dd9022a}{Run}}()\ =\ 0;}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_robo_task_a53bc2198fdd4309e783efc240a7a586e}{isThisThreadContext}}();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ uint16\_t\ \mbox{\hyperlink{class_robo_task_a1419ef40fd73938f9cbdc5da3bc3fe4c}{getStackHighWaterMark}}();}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00128\ \ \ \textcolor{keywordtype}{bool}\ enabled\_;}
+\DoxyCodeLine{00129\ \ \ \textcolor{keywordtype}{bool}\ bConfirmedPaused;}
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{bool}\ running\_;}
+\DoxyCodeLine{00131\ \ \ \textcolor{keywordtype}{bool}\ isDead\_;}
+\DoxyCodeLine{00132\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ runDelayPeriod;}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#ifdef\ ESP\_PLATFORM}}
+\DoxyCodeLine{00134\ \ \ TaskHandle\_t\ Task\_Handler;}
+\DoxyCodeLine{00135\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ startTimer;}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00137\ \ \ std::thread*\ pThread;}
+\DoxyCodeLine{00138\ \ \ std::chrono::high\_resolution\_clock::time\_point\ startTimePoint;}
+\DoxyCodeLine{00139\ \ \ std::thread::id\ this\_thread\_id;}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ ROBOTASK\_H\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,45 @@
+\hypertarget{utils_8h}{}\doxysection{src/utils.h File Reference}
+\label{utils_8h}\index{src/utils.h@{src/utils.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int16\+\_\+t \mbox{\hyperlink{utils_8h_a2cf0a6b683d681b37c7f772865c33cd8}{getrand}} (int16\+\_\+t low, int16\+\_\+t high)
+\begin{DoxyCompactList}\small\item\em gets a random number between two values (inclusive) \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{utils_8h_a5f3ef355efc529c83639b30fd71c24f2}{constrain}} (int16\+\_\+t v, int16\+\_\+t low, int16\+\_\+t high)
+\begin{DoxyCompactList}\small\item\em returns a value based on the input \textquotesingle{}v\textquotesingle{} and boundaries low and high \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename ... Args$>$ }\\std\+::unique\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{utils_8h_a2d5a8a422b22079ac963f0bbfdddbcef}{make\+\_\+unique}} (Args \&\&...args)
+\begin{DoxyCompactList}\small\item\em Utilize C++11 to make a \mbox{\hyperlink{utils_8h_a2d5a8a422b22079ac963f0bbfdddbcef}{make\+\_\+unique()}} for unique\+\_\+ptr$<$$>$ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{utils_8h_a5f3ef355efc529c83639b30fd71c24f2}\label{utils_8h_a5f3ef355efc529c83639b30fd71c24f2}} 
+\index{utils.h@{utils.h}!constrain@{constrain}}
+\index{constrain@{constrain}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{constrain()}{constrain()}}
+{\footnotesize\ttfamily int16\+\_\+t constrain (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{v,  }\item[{int16\+\_\+t}]{low,  }\item[{int16\+\_\+t}]{high }\end{DoxyParamCaption})}
+
+
+
+returns a value based on the input \textquotesingle{}v\textquotesingle{} and boundaries low and high 
+
+\mbox{\Hypertarget{utils_8h_a2cf0a6b683d681b37c7f772865c33cd8}\label{utils_8h_a2cf0a6b683d681b37c7f772865c33cd8}} 
+\index{utils.h@{utils.h}!getrand@{getrand}}
+\index{getrand@{getrand}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{getrand()}{getrand()}}
+{\footnotesize\ttfamily int16\+\_\+t getrand (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{low,  }\item[{int16\+\_\+t}]{high }\end{DoxyParamCaption})}
+
+
+
+gets a random number between two values (inclusive) 
+
+\mbox{\Hypertarget{utils_8h_a2d5a8a422b22079ac963f0bbfdddbcef}\label{utils_8h_a2d5a8a422b22079ac963f0bbfdddbcef}} 
+\index{utils.h@{utils.h}!make\_unique@{make\_unique}}
+\index{make\_unique@{make\_unique}!utils.h@{utils.h}}
+\doxysubsubsection{\texorpdfstring{make\_unique()}{make\_unique()}}
+{\footnotesize\ttfamily template$<$typename T , typename ... Args$>$ \\
+std\+::unique\+\_\+ptr$<$ T $>$ make\+\_\+unique (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})}
+
+
+
+Utilize C++11 to make a \mbox{\hyperlink{utils_8h_a2d5a8a422b22079ac963f0bbfdddbcef}{make\+\_\+unique()}} for unique\+\_\+ptr$<$$>$ 
+

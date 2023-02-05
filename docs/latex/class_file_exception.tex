@@ -1,0 +1,72 @@
+\hypertarget{class_file_exception}{}\doxysection{File\+Exception Class Reference}
+\label{class_file_exception}\index{FileException@{FileException}}
+
+
+helper for supporting try/catch in file-\/based exceptions.  
+
+
+
+
+{\ttfamily \#include $<$File\+Exception.\+h$>$}
+
+Inheritance diagram for File\+Exception\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_file_exception}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_file_exception_a98831337666225f4492633d2f0292641}{File\+Exception}} (const char $\ast$msg, size\+\_\+t partial\+Bytes, bool b\+EOF)
+\begin{DoxyCompactList}\small\item\em When the caller /throws/, they can give a message and also note how many bytes were processed and whether or not EOF was reached. This is very informative for the catch. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{class_file_exception_a3556281448e43d7c8b4faade2c674563}{what}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{class_file_exception_a89557a330a85f2bd0857fea4d9b5aea0}{get\+Partial}} ()
+\item 
+bool \mbox{\hyperlink{class_file_exception_aac1e9f4af75919bd768694d62833ab71}{is\+EOF}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+helper for supporting try/catch in file-\/based exceptions. 
+
+Allows tracking partially completed file operations and being able to query how many bytes were completed at the time of the exception. This is the typical situation where files are read in \textquotesingle{}blocks\textquotesingle{} or \textquotesingle{}chunks\textquotesingle{} of a fixed size and at the end of the file, there is a \textquotesingle{}remainder\textquotesingle{}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_file_exception_a98831337666225f4492633d2f0292641}\label{class_file_exception_a98831337666225f4492633d2f0292641}} 
+\index{FileException@{FileException}!FileException@{FileException}}
+\index{FileException@{FileException}!FileException@{FileException}}
+\doxysubsubsection{\texorpdfstring{FileException()}{FileException()}}
+{\footnotesize\ttfamily File\+Exception\+::\+File\+Exception (\begin{DoxyParamCaption}\item[{const char $\ast$}]{msg,  }\item[{size\+\_\+t}]{partial\+Bytes,  }\item[{bool}]{b\+EOF }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+When the caller /throws/, they can give a message and also note how many bytes were processed and whether or not EOF was reached. This is very informative for the catch. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_file_exception_a89557a330a85f2bd0857fea4d9b5aea0}\label{class_file_exception_a89557a330a85f2bd0857fea4d9b5aea0}} 
+\index{FileException@{FileException}!getPartial@{getPartial}}
+\index{getPartial@{getPartial}!FileException@{FileException}}
+\doxysubsubsection{\texorpdfstring{getPartial()}{getPartial()}}
+{\footnotesize\ttfamily size\+\_\+t File\+Exception\+::get\+Partial (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_file_exception_aac1e9f4af75919bd768694d62833ab71}\label{class_file_exception_aac1e9f4af75919bd768694d62833ab71}} 
+\index{FileException@{FileException}!isEOF@{isEOF}}
+\index{isEOF@{isEOF}!FileException@{FileException}}
+\doxysubsubsection{\texorpdfstring{isEOF()}{isEOF()}}
+{\footnotesize\ttfamily bool File\+Exception\+::is\+EOF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_file_exception_a3556281448e43d7c8b4faade2c674563}\label{class_file_exception_a3556281448e43d7c8b4faade2c674563}} 
+\index{FileException@{FileException}!what@{what}}
+\index{what@{what}!FileException@{FileException}}
+\doxysubsubsection{\texorpdfstring{what()}{what()}}
+{\footnotesize\ttfamily char $\ast$ File\+Exception\+::what (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_file_exception_8h}{File\+Exception.\+h}}\end{DoxyCompactItemize}

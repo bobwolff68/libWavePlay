@@ -1,0 +1,254 @@
+\hypertarget{class_wave_file_stdio_reader}{}\doxysection{Wave\+File\+Stdio\+Reader Class Reference}
+\label{class_wave_file_stdio_reader}\index{WaveFileStdioReader@{WaveFileStdioReader}}
+
+
+Support for reading using stdio (for use in native builds)  
+
+
+
+
+{\ttfamily \#include $<$Wave\+File\+Stdio\+Reader.\+h$>$}
+
+Inheritance diagram for Wave\+File\+Stdio\+Reader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_wave_file_stdio_reader}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wave_file_stdio_reader_a3b1aca7ce1dcbaa10b07cf76b02c4de9}{Wave\+File\+Stdio\+Reader}} (const char $\ast$fname)
+\begin{DoxyCompactList}\small\item\em Instantiate with filename to be opened. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wave_file_stdio_reader_a7114320c0147832056fee48d23ea0301}{$\sim$\+Wave\+File\+Stdio\+Reader}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_wave_file_buffer_reader}{Wave\+File\+Buffer\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wave_file_buffer_reader_adcaa4c5c3a6ff3b5d8f0b752d0834f6a}{Wave\+File\+Buffer\+Reader}} (const char $\ast$fname, uint16\+\_\+t ramp\+Timing=500)
+\begin{DoxyCompactList}\small\item\em Constructor requires the filename to use. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wave_file_buffer_reader_a4fe4eda192e2700dfcfd2a83b226df86}{$\sim$\+Wave\+File\+Buffer\+Reader}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_aaa6363190fa2645a978f78b253057d23}{Run}} ()
+\begin{DoxyCompactList}\small\item\em Thread-\/based processing automates the reading / re-\/filling operation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_afa5ba61fe37b80e7174bd99c698c3432}{print\+File\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Utility method for knowing what kind of file is being processed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_a5691fea3a1c5f02d01acaaec40852952}{is\+Playback\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Indicates when the actual file playout is complete. This is known by the fact that the read pointer has reached the write pointer after file reading is complete. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_a7d08d4ab4e1bfb9167f03bfd14b665a5}{is\+File\+Read\+Complete}} ()
+\begin{DoxyCompactList}\small\item\em Indicates when the reading of the WAVE file is fully complete and in memory. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a17da48a335be84c6d4b8f7f9f56aa1de}{get\+Buffer\+Full\+Percentage}} ()
+\begin{DoxyCompactList}\small\item\em Based upon the chosen and allocated memory buffer size, gives 0-\/100 result of fullness. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a59948ce9ccd0e75a343f0c82ab606004}{get\+File\+Read\+Percentage}} ()
+\begin{DoxyCompactList}\small\item\em Returns how far into the file we are as a percentage 0-\/100 at any given moment. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a2b397923269677eabc74e4339e553fb4}{get\+Sample\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Returns the parsed sample rate in bits per second. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a6707cba1819b9d073866e1eee48cdfc0}{get\+Last\+Byte\+Of\+File}} ()
+\begin{DoxyCompactList}\small\item\em The last byte of the file is useful for the ramp-\/out calculation. Internal, primarily. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a23fba242b95ec3eb4b1a9eadf2ec85ca}{get\+Read\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Return the address of the read pointer at any moment in time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_aac6d0c066044e414ed0d7157fa3767e8}{advance\+Read\+Pointer}} ()
+\begin{DoxyCompactList}\small\item\em Bump the read pointer by one address and wrap around if necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_wave_file_stdio_reader_a97c4d6f767d7ef449c09eaedb31afd98}{open}} (const char $\ast$fname)
+\begin{DoxyCompactList}\small\item\em open the fname consistent with the filesystem herein. Called by constructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wave_file_stdio_reader_a6b694d21923f041a217eb1b37c6d192a}{read}} (uint8\+\_\+t $\ast$p\+Dest, size\+\_\+t num\+Bytes)
+\begin{DoxyCompactList}\small\item\em read num\+Bytes from the open file and place those bytes in p\+Dest \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wave_file_stdio_reader_a0ae4aeaf9369c0c349ee9eca6bf087f7}{seek\+Rel}} (long offset)
+\begin{DoxyCompactList}\small\item\em seek in a relative manner (+ or -\/) given the offset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wave_file_stdio_reader_a30ab119ccd148c38f740509f435894b1}{close}} (void)
+\begin{DoxyCompactList}\small\item\em close the file \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_wave_file_buffer_reader}{Wave\+File\+Buffer\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{class_wave_file_buffer_reader_a576774f21df4a4f9cc26bb6db3add7fe}{open}} (const char $\ast$fname)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for opening the file on a variety of filesystems. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_wave_file_buffer_reader_ab298d8cf908a324ea811cab1d357dec4}{read}} (uint8\+\_\+t $\ast$p\+Dest, size\+\_\+t num\+Bytes)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for reading bytes and handling EOF and read errors. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_wave_file_buffer_reader_a01385181e00d6d2a95bcfb20f0bbbd4a}{close}} (void)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for closing the file. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_wave_file_buffer_reader_a488eac9fd1428870b84f019f410b6040}{seek\+Rel}} (long offset)=0
+\begin{DoxyCompactList}\small\item\em Abstract function for seeking, relatively, forward or backward from current location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_a021ede7ac7f212e31a769361bb643230}{read\+And\+Process\+Wav\+Header}} (void)
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_a03b154a1dea690b6dd3cc54f00005f5f}{read\+First\+Byte\+And\+Prep\+Ramp\+In}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_abc46d9ce99d708dfe25b0c5c2a87d525}{prep\+Ramp\+Out}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_acf9a34ca8975e5fe452540737bd99d3f}{buffer\+Alloc}} ()
+\item 
+void \mbox{\hyperlink{class_wave_file_buffer_reader_a857a9875fb1dc259519434244e937637}{buffer\+Fill}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+FILE $\ast$ \mbox{\hyperlink{class_wave_file_stdio_reader_ab87cfd7059dbc964cc4d732314e17769}{p\+File}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_wave_file_buffer_reader}{Wave\+File\+Buffer\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_wave_file_buffer_reader_a7055f1c6095b7872e707c11e17a4f073}{file\+Name}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_ad87172d333233dce44065eab7908b10c}{b\+Is\+Ramp\+Out\+Complete}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a10b43a47fc795d6a385d695d72172f18}{p\+Wav\+Buffer}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a28c7ac4fddc3bc382d8d460d350c2351}{p\+Buffer\+Read}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_ac510ed531845728a7fc022d6c9308524}{p\+Buffer\+Write}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a6fabdfc810d10ce448cc672d10454673}{length\+Wav\+Buffer}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a388b74fd82e90932c3be34a1929fd052}{last\+Byte\+Value\+Of\+File}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_aa99158aa52c30ad13da2d3454028158b}{b\+Is\+First\+Fill}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_af847599df71d16b79ea3cd9b5608267c}{b\+Is\+Buffer\+Ready}}
+\item 
+bool \mbox{\hyperlink{class_wave_file_buffer_reader_ac2aa862a1703a9d02fc4edb260981ed1}{b\+Is\+Done\+Reading\+File}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_aa0e75f153e660231ae0de51352dd0e53}{index\+Not\+Sure\+What\+Yet}}
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{class_wave_file_buffer_reader_a404af348926a6ffec2c9aa8819241e5d}{p\+Header}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_aa7f9fa75ebd61fa41d037da00cbdd8d4}{fill\+Sleep\+Time}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a0e03028581858e00ae486b27a65fcbc4}{buffer\+Byte\+Rates}} \mbox{[}\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}}\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_aa255f56524e6ac44598c7b685923b275}{buffer\+Sizes}} \mbox{[}\mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}}\mbox{]}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_ab0ca47d087dc1923ce29af7046bab744}{total\+Wav\+Bytes\+Read\+So\+Far}}
+\item 
+int \mbox{\hyperlink{class_wave_file_buffer_reader_a8b46e0606bb9c5eb454a88a3d75f5fc4}{percent\+Complete}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_abad4da8ccb98ef3ca07f50f18f440063}{num\+Channels}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a0945f5dba6c4f42f6eb9101ed7fe3c62}{bits\+Per\+Sample}}
+\item 
+unsigned long \mbox{\hyperlink{class_wave_file_buffer_reader_a34110997615565b70983b2045d2a3081}{sample\+Rate}}
+\item 
+unsigned long \mbox{\hyperlink{class_wave_file_buffer_reader_af71fcedf0857501268288419165837af}{byte\+Rate}}
+\item 
+unsigned long \mbox{\hyperlink{class_wave_file_buffer_reader_a7a9ab3e904e02d80401b3ae84c3c5186}{total\+Wave\+Bytes}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+\doxysubsubsection*{Public Attributes inherited from \mbox{\hyperlink{class_wave_file_buffer_reader}{Wave\+File\+Buffer\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_adbde99135916bba37155b5558ae84552}{WAV\+\_\+\+HEADER}} = 46
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_a3c0b8c6c87c7a49bc0518fdd0b0c879b}{WAV\+\_\+\+HEADER\+\_\+\+TO\+\_\+\+CHUNKLEN}} = 20
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_afd80ed2b6962b38e443ea3fffe6b7b75}{ramp\+Time}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_wave_file_buffer_reader}{Wave\+File\+Buffer\+Reader}}}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \mbox{\hyperlink{class_wave_file_buffer_reader_afb144f518c869892ce33a04effcdf207}{MAX\+\_\+\+SIZES\+\_\+\+COUNT}} = 6
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Support for reading using stdio (for use in native builds) 
+
+The base class \mbox{\hyperlink{class_wave_file_buffer_reader}{Wave\+File\+Buffer\+Reader}} has 4 pure virtual functions which need to be implemented by these support classes. This allows for the main classes to not be concerned with the implementation specifics of each type of filesystem. The filesystem specifics are /hidden/ under these classes. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_wave_file_stdio_reader_a3b1aca7ce1dcbaa10b07cf76b02c4de9}\label{class_wave_file_stdio_reader_a3b1aca7ce1dcbaa10b07cf76b02c4de9}} 
+\index{WaveFileStdioReader@{WaveFileStdioReader}!WaveFileStdioReader@{WaveFileStdioReader}}
+\index{WaveFileStdioReader@{WaveFileStdioReader}!WaveFileStdioReader@{WaveFileStdioReader}}
+\doxysubsubsection{\texorpdfstring{WaveFileStdioReader()}{WaveFileStdioReader()}}
+{\footnotesize\ttfamily Wave\+File\+Stdio\+Reader\+::\+Wave\+File\+Stdio\+Reader (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})}
+
+
+
+Instantiate with filename to be opened. 
+
+\mbox{\Hypertarget{class_wave_file_stdio_reader_a7114320c0147832056fee48d23ea0301}\label{class_wave_file_stdio_reader_a7114320c0147832056fee48d23ea0301}} 
+\index{WaveFileStdioReader@{WaveFileStdioReader}!````~WaveFileStdioReader@{$\sim$WaveFileStdioReader}}
+\index{````~WaveFileStdioReader@{$\sim$WaveFileStdioReader}!WaveFileStdioReader@{WaveFileStdioReader}}
+\doxysubsubsection{\texorpdfstring{$\sim$WaveFileStdioReader()}{~WaveFileStdioReader()}}
+{\footnotesize\ttfamily Wave\+File\+Stdio\+Reader\+::$\sim$\+Wave\+File\+Stdio\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_wave_file_stdio_reader_a30ab119ccd148c38f740509f435894b1}\label{class_wave_file_stdio_reader_a30ab119ccd148c38f740509f435894b1}} 
+\index{WaveFileStdioReader@{WaveFileStdioReader}!close@{close}}
+\index{close@{close}!WaveFileStdioReader@{WaveFileStdioReader}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void Wave\+File\+Stdio\+Reader\+::close (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+close the file 
+
+
+
+Implements \mbox{\hyperlink{class_wave_file_buffer_reader_a01385181e00d6d2a95bcfb20f0bbbd4a}{Wave\+File\+Buffer\+Reader}}.
+
+\mbox{\Hypertarget{class_wave_file_stdio_reader_a97c4d6f767d7ef449c09eaedb31afd98}\label{class_wave_file_stdio_reader_a97c4d6f767d7ef449c09eaedb31afd98}} 
+\index{WaveFileStdioReader@{WaveFileStdioReader}!open@{open}}
+\index{open@{open}!WaveFileStdioReader@{WaveFileStdioReader}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily bool Wave\+File\+Stdio\+Reader\+::open (\begin{DoxyParamCaption}\item[{const char $\ast$}]{fname }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+open the fname consistent with the filesystem herein. Called by constructor. 
+
+
+
+Implements \mbox{\hyperlink{class_wave_file_buffer_reader_a576774f21df4a4f9cc26bb6db3add7fe}{Wave\+File\+Buffer\+Reader}}.
+
+\mbox{\Hypertarget{class_wave_file_stdio_reader_a6b694d21923f041a217eb1b37c6d192a}\label{class_wave_file_stdio_reader_a6b694d21923f041a217eb1b37c6d192a}} 
+\index{WaveFileStdioReader@{WaveFileStdioReader}!read@{read}}
+\index{read@{read}!WaveFileStdioReader@{WaveFileStdioReader}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily bool Wave\+File\+Stdio\+Reader\+::read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{p\+Dest,  }\item[{size\+\_\+t}]{num\+Bytes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+read num\+Bytes from the open file and place those bytes in p\+Dest 
+
+\begin{DoxyReturn}{Returns}
+true if all is well. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function will throw \mbox{\hyperlink{class_file_exception}{File\+Exception}} on EOF or read errors. 
+\end{DoxyNote}
+
+
+Implements \mbox{\hyperlink{class_wave_file_buffer_reader_ab298d8cf908a324ea811cab1d357dec4}{Wave\+File\+Buffer\+Reader}}.
+
+\mbox{\Hypertarget{class_wave_file_stdio_reader_a0ae4aeaf9369c0c349ee9eca6bf087f7}\label{class_wave_file_stdio_reader_a0ae4aeaf9369c0c349ee9eca6bf087f7}} 
+\index{WaveFileStdioReader@{WaveFileStdioReader}!seekRel@{seekRel}}
+\index{seekRel@{seekRel}!WaveFileStdioReader@{WaveFileStdioReader}}
+\doxysubsubsection{\texorpdfstring{seekRel()}{seekRel()}}
+{\footnotesize\ttfamily bool Wave\+File\+Stdio\+Reader\+::seek\+Rel (\begin{DoxyParamCaption}\item[{long}]{offset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+seek in a relative manner (+ or -\/) given the offset. 
+
+
+
+Implements \mbox{\hyperlink{class_wave_file_buffer_reader_a488eac9fd1428870b84f019f410b6040}{Wave\+File\+Buffer\+Reader}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_wave_file_stdio_reader_ab87cfd7059dbc964cc4d732314e17769}\label{class_wave_file_stdio_reader_ab87cfd7059dbc964cc4d732314e17769}} 
+\index{WaveFileStdioReader@{WaveFileStdioReader}!pFile@{pFile}}
+\index{pFile@{pFile}!WaveFileStdioReader@{WaveFileStdioReader}}
+\doxysubsubsection{\texorpdfstring{pFile}{pFile}}
+{\footnotesize\ttfamily FILE$\ast$ Wave\+File\+Stdio\+Reader\+::p\+File\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{_wave_file_stdio_reader_8h}{Wave\+File\+Stdio\+Reader.\+h}}\item 
+src/\mbox{\hyperlink{_wave_file_stdio_reader_8cpp}{Wave\+File\+Stdio\+Reader.\+cpp}}\end{DoxyCompactItemize}
